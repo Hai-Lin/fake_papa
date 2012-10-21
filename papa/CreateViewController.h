@@ -7,12 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 #import "papa.h"
 
-@interface CreateViewController : UIViewController
+@interface CreateViewController : UIViewController <AVAudioRecorderDelegate, AVAudioPlayerDelegate>
+
 @property papa * papa;
 @property NSDictionary *imageInfo;
-@property NSData *audioInfo;
 @property (weak, nonatomic) IBOutlet UIImageView *image;
+@property (weak, nonatomic) IBOutlet UIButton *recordButton;
+@property (weak, nonatomic) IBOutlet UIButton *stopButton;
+@property (weak, nonatomic) IBOutlet UIButton *playButton;
+- (IBAction)record:(UIButton *)sender;
+- (IBAction)stop:(UIButton *)sender;
+- (IBAction)play:(UIButton *)sender;
 
 @end

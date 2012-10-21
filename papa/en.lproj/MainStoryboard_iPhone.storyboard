@@ -63,25 +63,77 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jDM-Ow-Efa">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="461" id="zLv-I2-xEC"/>
+                                    <constraint firstAttribute="height" constant="439" id="tmt-rn-LTd"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8go-3v-DOq">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Record">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="record:" destination="th1-b8-j1g" eventType="touchUpInside" id="pGF-aG-isR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iq0-iZ-d9O">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Play">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="play:" destination="th1-b8-j1g" eventType="touchUpInside" id="E4Z-XG-tPf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MSn-rA-r4e">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="65" id="u31-Zs-06k"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Stop">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="stop:" destination="th1-b8-j1g" eventType="touchUpInside" id="HTR-EY-duq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="MSn-rA-r4e" firstAttribute="centerX" secondItem="jDM-Ow-Efa" secondAttribute="centerX" type="default" id="0vU-B8-Lpw"/>
+                            <constraint firstItem="8go-3v-DOq" firstAttribute="baseline" secondItem="MSn-rA-r4e" secondAttribute="baseline" type="default" id="2Ee-Rd-8N7"/>
+                            <constraint firstItem="8go-3v-DOq" firstAttribute="top" secondItem="MSn-rA-r4e" secondAttribute="top" type="default" id="GvI-hi-wST"/>
                             <constraint firstItem="jDM-Ow-Efa" firstAttribute="top" secondItem="XNL-BO-lge" secondAttribute="top" type="default" id="KYi-wq-bTd"/>
+                            <constraint firstAttribute="trailing" secondItem="iq0-iZ-d9O" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="UH7-ki-N9d"/>
+                            <constraint firstAttribute="bottom" secondItem="8go-3v-DOq" secondAttribute="bottom" constant="8" id="VM9-hr-1wJ"/>
+                            <constraint firstItem="iq0-iZ-d9O" firstAttribute="baseline" secondItem="MSn-rA-r4e" secondAttribute="baseline" type="default" id="W1m-UZ-dQh"/>
                             <constraint firstItem="jDM-Ow-Efa" firstAttribute="leading" secondItem="XNL-BO-lge" secondAttribute="leading" type="default" id="hez-YA-jgB"/>
+                            <constraint firstItem="8go-3v-DOq" firstAttribute="leading" secondItem="XNL-BO-lge" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="k82-Cf-vns"/>
                             <constraint firstItem="jDM-Ow-Efa" firstAttribute="trailing" secondItem="XNL-BO-lge" secondAttribute="trailing" type="default" id="zmm-vX-V7J"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fyR-cA-xdK"/>
                     <connections>
                         <outlet property="image" destination="jDM-Ow-Efa" id="a32-II-693"/>
+                        <outlet property="playButton" destination="iq0-iZ-d9O" id="P3R-MH-IUx"/>
+                        <outlet property="recordButton" destination="8go-3v-DOq" id="csS-Sz-jQb"/>
+                        <outlet property="stopButton" destination="MSn-rA-r4e" id="jmZ-ta-n17"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jKU-AS-htd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="975" y="-50"/>
+            <point key="canvasLocation" x="947" y="-63"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XvO-8z-bu1">
@@ -102,23 +154,6 @@
             <point key="canvasLocation" x="-1" y="-14"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="CreateViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CreateViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="image" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="create:" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
