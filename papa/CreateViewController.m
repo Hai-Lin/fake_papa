@@ -30,6 +30,8 @@
 {
     [super viewDidLoad];
     UIImage *newImg = [_imageInfo objectForKey:UIImagePickerControllerOriginalImage];
+    NSLog(@"Load image");
+    NSLog(@"%@", [_imageInfo description]);
     [_image setImage:newImg];
     
 }

@@ -63,7 +63,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jDM-Ow-Efa">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="497" id="22d-1I-Uxd"/>
+                                    <constraint firstAttribute="height" constant="461" id="zLv-I2-xEC"/>
                                 </constraints>
                             </imageView>
                         </subviews>
