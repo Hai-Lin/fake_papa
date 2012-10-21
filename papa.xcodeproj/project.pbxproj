@@ -19,6 +19,11 @@
 		380942DA1630E7B400C8347E /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 380942D81630E7B400C8347E /* MainStoryboard_iPhone.storyboard */; };
 		380942DD1630E7B400C8347E /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 380942DB1630E7B400C8347E /* MainStoryboard_iPad.storyboard */; };
 		380942E01630E7B400C8347E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 380942DF1630E7B400C8347E /* ViewController.m */; };
+		380942E81630EA6200C8347E /* papa.m in Sources */ = {isa = PBXBuildFile; fileRef = 380942E71630EA6200C8347E /* papa.m */; };
+		380943281634600100C8347E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380943271634600100C8347E /* MapKit.framework */; };
+		3809432A1634600800C8347E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380943291634600800C8347E /* CoreLocation.framework */; };
+		3809432C1634650300C8347E /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3809432B1634650300C8347E /* AssetsLibrary.framework */; };
+		3809433D1634849A00C8347E /* CreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3809433C1634849A00C8347E /* CreateViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +44,13 @@
 		380942DC1630E7B400C8347E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		380942DE1630E7B400C8347E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		380942DF1630E7B400C8347E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		380942E61630EA6200C8347E /* papa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = papa.h; sourceTree = "<group>"; };
+		380942E71630EA6200C8347E /* papa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = papa.m; sourceTree = "<group>"; };
+		380943271634600100C8347E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		380943291634600800C8347E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		3809432B1634650300C8347E /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		3809433B1634849A00C8347E /* CreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateViewController.h; sourceTree = "<group>"; };
+		3809433C1634849A00C8347E /* CreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +58,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3809432C1634650300C8347E /* AssetsLibrary.framework in Frameworks */,
+				3809432A1634600800C8347E /* CoreLocation.framework in Frameworks */,
+				380943281634600100C8347E /* MapKit.framework in Frameworks */,
 				380942C11630E7B400C8347E /* UIKit.framework in Frameworks */,
 				380942C31630E7B400C8347E /* Foundation.framework in Frameworks */,
 				380942C51630E7B400C8347E /* CoreGraphics.framework in Frameworks */,
@@ -75,6 +90,9 @@
 		380942BF1630E7B400C8347E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3809432B1634650300C8347E /* AssetsLibrary.framework */,
+				380943291634600800C8347E /* CoreLocation.framework */,
+				380943271634600100C8347E /* MapKit.framework */,
 				380942C01630E7B400C8347E /* UIKit.framework */,
 				380942C21630E7B400C8347E /* Foundation.framework */,
 				380942C41630E7B400C8347E /* CoreGraphics.framework */,
@@ -88,9 +106,13 @@
 				380942CF1630E7B400C8347E /* AppDelegate.h */,
 				380942D01630E7B400C8347E /* AppDelegate.m */,
 				380942D81630E7B400C8347E /* MainStoryboard_iPhone.storyboard */,
+				3809433B1634849A00C8347E /* CreateViewController.h */,
+				3809433C1634849A00C8347E /* CreateViewController.m */,
 				380942DB1630E7B400C8347E /* MainStoryboard_iPad.storyboard */,
 				380942DE1630E7B400C8347E /* ViewController.h */,
 				380942DF1630E7B400C8347E /* ViewController.m */,
+				380942E61630EA6200C8347E /* papa.h */,
+				380942E71630EA6200C8347E /* papa.m */,
 				380942C71630E7B400C8347E /* Supporting Files */,
 			);
 			path = papa;
@@ -180,6 +202,8 @@
 				380942CD1630E7B400C8347E /* main.m in Sources */,
 				380942D11630E7B400C8347E /* AppDelegate.m in Sources */,
 				380942E01630E7B400C8347E /* ViewController.m in Sources */,
+				380942E81630EA6200C8347E /* papa.m in Sources */,
+				3809433D1634849A00C8347E /* CreateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

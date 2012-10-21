@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "papa.h"
+#import "CreateViewController.h"
 
-@interface ViewController : UIViewController
-
+@interface ViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@property NSMutableArray *papa;
+- (IBAction)create:(UIButton *)sender;
 @end
