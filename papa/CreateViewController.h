@@ -21,5 +21,6 @@
 - (IBAction)record:(UIButton *)sender;
 - (IBAction)stop:(UIButton *)sender;
 - (IBAction)play:(UIButton *)sender;
+- (IBAction)finish:(UIBarButtonItem *)sender;
 
 @end

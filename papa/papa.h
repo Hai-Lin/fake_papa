@@ -14,7 +14,7 @@
 @interface papa : NSObject
 //@property UIImage *image;
 @property NSData *audioData;
-@property NSData *imageData;
+@property NSDictionary *imageData;
 
 //@property CLLocation *location;
 @end

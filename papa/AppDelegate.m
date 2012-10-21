@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
-
+@synthesize papas = _papas;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
@@ -35,6 +35,9 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    if(!_papas)
+        _papas = [[NSMutableArray alloc] init];
+    
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 

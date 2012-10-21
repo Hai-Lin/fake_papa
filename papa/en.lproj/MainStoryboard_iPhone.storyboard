@@ -9,7 +9,7 @@
             <objects>
                 <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HE1-c2-pKd">
@@ -58,7 +58,7 @@
             <objects>
                 <viewController id="th1-b8-j1g" customClass="CreateViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XNL-BO-lge">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jDM-Ow-Efa">
@@ -113,7 +113,6 @@
                         <constraints>
                             <constraint firstItem="MSn-rA-r4e" firstAttribute="centerX" secondItem="jDM-Ow-Efa" secondAttribute="centerX" type="default" id="0vU-B8-Lpw"/>
                             <constraint firstItem="8go-3v-DOq" firstAttribute="baseline" secondItem="MSn-rA-r4e" secondAttribute="baseline" type="default" id="2Ee-Rd-8N7"/>
-                            <constraint firstItem="8go-3v-DOq" firstAttribute="top" secondItem="MSn-rA-r4e" secondAttribute="top" type="default" id="GvI-hi-wST"/>
                             <constraint firstItem="jDM-Ow-Efa" firstAttribute="top" secondItem="XNL-BO-lge" secondAttribute="top" type="default" id="KYi-wq-bTd"/>
                             <constraint firstAttribute="trailing" secondItem="iq0-iZ-d9O" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="UH7-ki-N9d"/>
                             <constraint firstAttribute="bottom" secondItem="8go-3v-DOq" secondAttribute="bottom" constant="8" id="VM9-hr-1wJ"/>
@@ -123,17 +122,24 @@
                             <constraint firstItem="jDM-Ow-Efa" firstAttribute="trailing" secondItem="XNL-BO-lge" secondAttribute="trailing" type="default" id="zmm-vX-V7J"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="fyR-cA-xdK"/>
+                    <navigationItem key="navigationItem" id="fyR-cA-xdK">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="7AB-fn-o4h">
+                            <connections>
+                                <action selector="finish:" destination="th1-b8-j1g" id="UlI-7Q-Fqf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="image" destination="jDM-Ow-Efa" id="a32-II-693"/>
                         <outlet property="playButton" destination="iq0-iZ-d9O" id="P3R-MH-IUx"/>
                         <outlet property="recordButton" destination="8go-3v-DOq" id="csS-Sz-jQb"/>
                         <outlet property="stopButton" destination="MSn-rA-r4e" id="jmZ-ta-n17"/>
+                        <segue destination="2" kind="push" identifier="BackToMain" id="SqR-b2-fi1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jKU-AS-htd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="947" y="-63"/>
+            <point key="canvasLocation" x="1080" y="-36"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XvO-8z-bu1">
@@ -159,4 +165,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="SqR-b2-fi1"/>
+    </inferredMetricsTieBreakers>
 </document>

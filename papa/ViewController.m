@@ -7,28 +7,26 @@
 //
 
 #import "ViewController.h"
+#import "AppDelegate.h"
 
 @interface ViewController ()
 @property NSDictionary *imageRowData;
-
 
 @end
 
 @implementation ViewController
 
-@synthesize papa = _papa;
 @synthesize imageRowData = _imageRowData;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if(_papa)
-    {
-        _papa = [[NSMutableArray alloc] init];
-    }
-    if(_imageRowData)
+        if(!_imageRowData)
     {
         _imageRowData = [[NSDictionary alloc] init];
     }
+    AppDelegate * appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSLog(@"%d", appDelegate.papas.count);
+    
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -116,6 +114,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
     pickerC.delegate = self;
     [self presentViewController:pickerC animated:YES completion:nil];
 
-    
 }
+
 @end

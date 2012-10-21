@@ -7,6 +7,8 @@
 //
 
 #import "CreateViewController.h"
+#import "ViewController.h"
+#import "AppDelegate.h"
 
 @interface CreateViewController ()
 @property AVAudioRecorder *audioRecorder;
@@ -46,8 +48,11 @@
     NSLog(@"Load image");
     NSLog(@"%@", [_imageInfo description]);
     [_image setImage:newImg];
+    _papa = [[papa alloc] init];
+    _papa.imageData = _imageInfo;
     
     //init audio player
+    _audioData = [[NSData alloc] init];
     _playButton.enabled = NO;
     _stopButton.enabled = NO;
     
@@ -120,6 +125,7 @@
         [_audioRecorder stop];
         NSError *err = nil;
         _audioData = [NSData dataWithContentsOfFile:[_audioRecorder.url path] options: 0 error:&err];
+        _papa.audioData = _audioData;
         [_recordButton setTitle:@"Record" forState:UIControlStateNormal];
     } else if (_audioPlayer.playing) {
         [_audioPlayer stop];
@@ -162,8 +168,27 @@
 
 }
 
+- (IBAction)finish:(UIBarButtonItem *)sender {
+        _papa.audioData = _audioData;
+    [self performSegueWithIdentifier:@"BackToMain" sender:self];
+    
+}
+
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
     [_playButton setTitle:@"Play" forState:UIControlStateNormal];
 }
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"BackToMain"])
+    {
+        //NSLog(@"%@", [segue.destinationViewController description]);
+        //[segue.destinationViewController addToPapa:_papa];
+        AppDelegate * appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [appDelegate.papas addObject:_papa];
+    }
+    
+}
+
 @end
