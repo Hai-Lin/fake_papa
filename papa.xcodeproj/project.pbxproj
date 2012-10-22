@@ -26,6 +26,7 @@
 		3809433D1634849A00C8347E /* CreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3809433C1634849A00C8347E /* CreateViewController.m */; };
 		380943431634911C00C8347E /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380943421634911C00C8347E /* CoreAudio.framework */; };
 		380943451634965E00C8347E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380943441634965E00C8347E /* AVFoundation.framework */; };
+		3809434C1634CA9100C8347E /* showPapaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3809434B1634CA9000C8347E /* showPapaViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,8 @@
 		3809433C1634849A00C8347E /* CreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateViewController.m; sourceTree = "<group>"; };
 		380943421634911C00C8347E /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		380943441634965E00C8347E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		3809434A1634CA9000C8347E /* showPapaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = showPapaViewController.h; sourceTree = "<group>"; };
+		3809434B1634CA9000C8347E /* showPapaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = showPapaViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +117,8 @@
 				380942CF1630E7B400C8347E /* AppDelegate.h */,
 				380942D01630E7B400C8347E /* AppDelegate.m */,
 				380942D81630E7B400C8347E /* MainStoryboard_iPhone.storyboard */,
+				3809434A1634CA9000C8347E /* showPapaViewController.h */,
+				3809434B1634CA9000C8347E /* showPapaViewController.m */,
 				3809433B1634849A00C8347E /* CreateViewController.h */,
 				3809433C1634849A00C8347E /* CreateViewController.m */,
 				380942DB1630E7B400C8347E /* MainStoryboard_iPad.storyboard */,
@@ -212,6 +217,7 @@
 				380942E01630E7B400C8347E /* ViewController.m in Sources */,
 				380942E81630EA6200C8347E /* papa.m in Sources */,
 				3809433D1634849A00C8347E /* CreateViewController.m in Sources */,
+				3809434C1634CA9100C8347E /* showPapaViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +344,7 @@
 				380942E51630E7B400C8347E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

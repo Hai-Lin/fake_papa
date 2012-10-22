@@ -12,4 +12,5 @@
 
 @interface ViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 - (IBAction)create:(UIButton *)sender;
+- (IBAction)goToView:(UIButton *)sender;
 @end

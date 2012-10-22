@@ -116,4 +116,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 
 }
 
+- (IBAction)goToView:(UIButton *)sender {
+     AppDelegate * appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if(appDelegate.papas.count > 0)
+        [self performSegueWithIdentifier:@"viewPapa" sender:self];
+}
+
 @end

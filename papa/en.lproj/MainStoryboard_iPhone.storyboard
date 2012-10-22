@@ -21,6 +21,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="goToView:" destination="2" eventType="touchUpInside" id="fIe-1H-9Hg"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vHx-um-h4N">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -47,11 +50,63 @@
                     <navigationItem key="navigationItem" id="RFf-pA-TfX"/>
                     <connections>
                         <segue destination="th1-b8-j1g" kind="push" identifier="CreateSegue" id="ERH-ca-7ol"/>
+                        <segue destination="zfU-Kn-cnJ" kind="push" identifier="viewPapa" id="O8S-ZN-jQD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="525" y="-14"/>
+        </scene>
+        <!--Show Papa View Controller - Title-->
+        <scene sceneID="MiV-sI-fwB">
+            <objects>
+                <viewController id="zfU-Kn-cnJ" customClass="showPapaViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="88D-HR-K5q">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7zV-vu-yFr"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xXl-qP-LWZ">
+                                <items>
+                                    <barButtonItem title="Map" id="vwm-FQ-Z0u"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="fG7-5K-yMp"/>
+                                    <barButtonItem title="Play" id="j8O-Ra-CFA"/>
+                                </items>
+                            </toolbar>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9F-I4-3Uq">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="r9F-I4-3Uq" firstAttribute="centerX" secondItem="xXl-qP-LWZ" secondAttribute="centerX" type="default" id="1dO-3W-lX2"/>
+                            <constraint firstItem="7zV-vu-yFr" firstAttribute="leading" secondItem="88D-HR-K5q" secondAttribute="leading" type="default" id="3JX-jk-HWh"/>
+                            <constraint firstItem="xXl-qP-LWZ" firstAttribute="top" secondItem="7zV-vu-yFr" secondAttribute="bottom" type="default" id="8og-ea-yDd"/>
+                            <constraint firstAttribute="bottom" secondItem="r9F-I4-3Uq" secondAttribute="bottom" constant="12" id="FYJ-Dz-OxM"/>
+                            <constraint firstItem="7zV-vu-yFr" firstAttribute="top" secondItem="88D-HR-K5q" secondAttribute="top" type="default" id="mso-7d-i8s"/>
+                            <constraint firstItem="xXl-qP-LWZ" firstAttribute="leading" secondItem="88D-HR-K5q" secondAttribute="leading" type="default" id="qux-rO-dQU"/>
+                            <constraint firstItem="xXl-qP-LWZ" firstAttribute="trailing" secondItem="88D-HR-K5q" secondAttribute="trailing" type="default" id="unk-lD-Qzb"/>
+                            <constraint firstItem="7zV-vu-yFr" firstAttribute="trailing" secondItem="88D-HR-K5q" secondAttribute="trailing" type="default" id="utL-ed-2mk"/>
+                            <constraint firstItem="xXl-qP-LWZ" firstAttribute="bottom" secondItem="88D-HR-K5q" secondAttribute="bottom" type="default" id="yAa-5i-1gY"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="qoG-CL-Xrb">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="aQU-bu-ACC">
+                            <connections>
+                                <action selector="nextPage:" destination="zfU-Kn-cnJ" id="BlD-3Z-plU"/>
+                                <segue destination="zfU-Kn-cnJ" kind="push" identifier="nextPage" id="1EC-zN-Pyr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="image" destination="7zV-vu-yFr" id="62e-9S-OoK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iIY-NG-6u4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="316" y="691"/>
         </scene>
         <!--Create View Controller-->
         <scene sceneID="g11-tF-wg3">
@@ -167,5 +222,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="SqR-b2-fi1"/>
+        <segue reference="O8S-ZN-jQD"/>
     </inferredMetricsTieBreakers>
 </document>
