@@ -29,6 +29,7 @@
 @synthesize distanceLabel = _distanceLabel;
 @synthesize locationManager = _locationManager;
 
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -114,6 +115,9 @@
         }
         
     }
+    if([segue.identifier isEqualToString:@"ShowMap"]) {
+        [segue.destinationViewController setLocation:_location];
+    }
     
 }
 
@@ -140,7 +144,10 @@
 }
 
 - (IBAction)goToMap:(UIBarButtonItem *)sender {
+    [self performSegueWithIdentifier:@"ShowMap" sender:self];
 }
+
+#pragma mark locationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
     double distance = [_location distanceFromLocation:_locationManager.location];

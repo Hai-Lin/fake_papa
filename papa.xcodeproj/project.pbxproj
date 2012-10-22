@@ -27,6 +27,9 @@
 		380943431634911C00C8347E /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380943421634911C00C8347E /* CoreAudio.framework */; };
 		380943451634965E00C8347E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380943441634965E00C8347E /* AVFoundation.framework */; };
 		3809434C1634CA9100C8347E /* showPapaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3809434B1634CA9000C8347E /* showPapaViewController.m */; };
+		38A8D3B01634ECAE00754924 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A8D3AF1634ECAE00754924 /* MapViewController.m */; };
+		38A8D3B21634EF2600754924 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A8D3B11634EF2600754924 /* AddressBook.framework */; };
+		38A8D3B31634F2B700754924 /* MyLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A8D3AC1634E3EF00754924 /* MyLocation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +63,9 @@
 		3809434B1634CA9000C8347E /* showPapaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = showPapaViewController.m; sourceTree = "<group>"; };
 		38A8D3AB1634E3EF00754924 /* MyLocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyLocation.h; sourceTree = "<group>"; };
 		38A8D3AC1634E3EF00754924 /* MyLocation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyLocation.m; sourceTree = "<group>"; };
+		38A8D3AE1634ECAE00754924 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		38A8D3AF1634ECAE00754924 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		38A8D3B11634EF2600754924 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,11 +73,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3809432A1634600800C8347E /* CoreLocation.framework in Frameworks */,
+				380943281634600100C8347E /* MapKit.framework in Frameworks */,
+				38A8D3B21634EF2600754924 /* AddressBook.framework in Frameworks */,
 				380943451634965E00C8347E /* AVFoundation.framework in Frameworks */,
 				380943431634911C00C8347E /* CoreAudio.framework in Frameworks */,
 				3809432C1634650300C8347E /* AssetsLibrary.framework in Frameworks */,
-				3809432A1634600800C8347E /* CoreLocation.framework in Frameworks */,
-				380943281634600100C8347E /* MapKit.framework in Frameworks */,
 				380942C11630E7B400C8347E /* UIKit.framework in Frameworks */,
 				380942C31630E7B400C8347E /* Foundation.framework in Frameworks */,
 				380942C51630E7B400C8347E /* CoreGraphics.framework in Frameworks */,
@@ -101,6 +108,7 @@
 		380942BF1630E7B400C8347E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				38A8D3B11634EF2600754924 /* AddressBook.framework */,
 				380943441634965E00C8347E /* AVFoundation.framework */,
 				380943421634911C00C8347E /* CoreAudio.framework */,
 				3809432B1634650300C8347E /* AssetsLibrary.framework */,
@@ -119,6 +127,8 @@
 				380942CF1630E7B400C8347E /* AppDelegate.h */,
 				380942D01630E7B400C8347E /* AppDelegate.m */,
 				380942D81630E7B400C8347E /* MainStoryboard_iPhone.storyboard */,
+				38A8D3AE1634ECAE00754924 /* MapViewController.h */,
+				38A8D3AF1634ECAE00754924 /* MapViewController.m */,
 				3809434A1634CA9000C8347E /* showPapaViewController.h */,
 				3809434B1634CA9000C8347E /* showPapaViewController.m */,
 				3809433B1634849A00C8347E /* CreateViewController.h */,
@@ -222,6 +232,8 @@
 				380942E81630EA6200C8347E /* papa.m in Sources */,
 				3809433D1634849A00C8347E /* CreateViewController.m in Sources */,
 				3809434C1634CA9100C8347E /* showPapaViewController.m in Sources */,
+				38A8D3B01634ECAE00754924 /* MapViewController.m in Sources */,
+				38A8D3B31634F2B700754924 /* MyLocation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

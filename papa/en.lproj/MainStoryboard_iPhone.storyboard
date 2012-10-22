@@ -116,11 +116,39 @@
                         <outlet property="distanceLabel" destination="r9F-I4-3Uq" id="N28-T3-pGO"/>
                         <outlet property="image" destination="7zV-vu-yFr" id="62e-9S-OoK"/>
                         <outlet property="nextButton" destination="aQU-bu-ACC" id="wkg-gf-TsK"/>
+                        <segue destination="SUH-3U-Jxi" kind="push" identifier="ShowMap" id="fj0-Z1-O0W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iIY-NG-6u4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="316" y="691"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="YKb-xv-f2h">
+            <objects>
+                <viewController id="SUH-3U-Jxi" customClass="MapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uDe-Wc-tsN">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kzt-TE-KX2"/>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kzt-TE-KX2" firstAttribute="leading" secondItem="uDe-Wc-tsN" secondAttribute="leading" type="default" id="Dro-se-a9M"/>
+                            <constraint firstItem="kzt-TE-KX2" firstAttribute="bottom" secondItem="uDe-Wc-tsN" secondAttribute="bottom" type="default" id="E8j-ci-Cmh"/>
+                            <constraint firstItem="kzt-TE-KX2" firstAttribute="trailing" secondItem="uDe-Wc-tsN" secondAttribute="trailing" type="default" id="kHa-uY-Muq"/>
+                            <constraint firstItem="kzt-TE-KX2" firstAttribute="top" secondItem="uDe-Wc-tsN" secondAttribute="top" type="default" id="lf7-5N-ZGr"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="xLG-p8-W1J"/>
+                    <connections>
+                        <outlet property="mapView" destination="kzt-TE-KX2" id="rgZ-dB-JHE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r9H-eH-voR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="842" y="670"/>
         </scene>
         <!--Create View Controller-->
         <scene sceneID="g11-tF-wg3">
