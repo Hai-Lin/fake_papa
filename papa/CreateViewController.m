@@ -183,8 +183,6 @@
 {
     if([segue.identifier isEqualToString:@"BackToMain"])
     {
-        //NSLog(@"%@", [segue.destinationViewController description]);
-        //[segue.destinationViewController addToPapa:_papa];
         AppDelegate * appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [appDelegate.papas insertObject:_papa atIndex:0];
     }

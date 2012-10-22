@@ -12,9 +12,7 @@
 #import <CoreLocation/CoreLocation.h>
 
 @interface papa : NSObject
-//@property UIImage *image;
 @property NSData *audioData;
 @property NSDictionary *imageData;
 
-//@property CLLocation *location;
 @end

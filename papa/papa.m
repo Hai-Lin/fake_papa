@@ -10,9 +10,7 @@
 
 @implementation papa
 
-//@synthesize image = _image;
 @synthesize audioData = _audioData;
-//@synthesize location = _location;
 @synthesize imageData = _imageData;
 
 @end
