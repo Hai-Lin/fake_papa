@@ -58,6 +58,8 @@
 		380943441634965E00C8347E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		3809434A1634CA9000C8347E /* showPapaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = showPapaViewController.h; sourceTree = "<group>"; };
 		3809434B1634CA9000C8347E /* showPapaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = showPapaViewController.m; sourceTree = "<group>"; };
+		38A8D3AB1634E3EF00754924 /* MyLocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyLocation.h; sourceTree = "<group>"; };
+		38A8D3AC1634E3EF00754924 /* MyLocation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyLocation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,8 @@
 				380942DE1630E7B400C8347E /* ViewController.h */,
 				380942DF1630E7B400C8347E /* ViewController.m */,
 				380942E61630EA6200C8347E /* papa.h */,
+				38A8D3AB1634E3EF00754924 /* MyLocation.h */,
+				38A8D3AC1634E3EF00754924 /* MyLocation.m */,
 				380942E71630EA6200C8347E /* papa.m */,
 				380942C71630E7B400C8347E /* Supporting Files */,
 			);
