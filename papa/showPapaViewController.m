@@ -15,6 +15,7 @@
 @property AVAudioPlayer *audioPlayer;
 @property CLLocation *location;
 @property CLLocationManager *locationManager;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end
 
@@ -22,7 +23,7 @@
 
 @synthesize index = _index;
 @synthesize papa = _papa;
-@synthesize image = _image;
+@synthesize imageView = _imageView;
 @synthesize audioPlayer = _audioPlayer;
 @synthesize nextButton = _nextButton;
 @synthesize location = _location;
@@ -45,7 +46,7 @@
      AppDelegate * appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     _papa = appDelegate.papas[_index];
     UIImage *gotImage = [_papa.imageData objectForKey:UIImagePickerControllerOriginalImage];
-    [_image setImage:gotImage];
+    [_imageView setImage:gotImage];
     if(appDelegate.papas.count <= (_index+1))
         _nextButton.enabled = NO;
     //Get user location

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Pq2-ew-beS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Pq2-ew-beS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
@@ -12,7 +12,8 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HE1-c2-pKd">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HE1-c2-pKd">
+                                <rect key="frame" x="39" y="84" width="59" height="44"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="View">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -25,7 +26,8 @@
                                     <action selector="goToView:" destination="2" eventType="touchUpInside" id="fIe-1H-9Hg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vHx-um-h4N">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vHx-um-h4N">
+                                <rect key="frame" x="208" y="84" width="71" height="44"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Create">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -40,12 +42,6 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="HE1-c2-pKd" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="39" id="LsN-iK-l14"/>
-                            <constraint firstAttribute="trailing" secondItem="vHx-um-h4N" secondAttribute="trailing" constant="41" id="d58-lP-exB"/>
-                            <constraint firstItem="HE1-c2-pKd" firstAttribute="top" secondItem="3" secondAttribute="top" constant="84" id="iXI-Bq-p3v"/>
-                            <constraint firstItem="vHx-um-h4N" firstAttribute="baseline" secondItem="HE1-c2-pKd" secondAttribute="baseline" type="default" id="pqR-q5-GZ9"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RFf-pA-TfX"/>
                     <connections>
@@ -65,12 +61,8 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7zV-vu-yFr">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="420" id="bzg-zM-T69"/>
-                                </constraints>
-                            </imageView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xXl-qP-LWZ">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="xXl-qP-LWZ">
+                                <rect key="frame" x="0.0" y="460" width="320" height="44"/>
                                 <items>
                                     <barButtonItem title="Map" id="vwm-FQ-Z0u">
                                         <connections>
@@ -85,23 +77,18 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9F-I4-3Uq">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="r9F-I4-3Uq">
+                                <rect key="frame" x="139" y="471" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="V2o-jG-U32">
+                                <rect key="frame" x="0.0" y="63" width="320" height="264"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="r9F-I4-3Uq" firstAttribute="centerX" secondItem="xXl-qP-LWZ" secondAttribute="centerX" type="default" id="1dO-3W-lX2"/>
-                            <constraint firstItem="7zV-vu-yFr" firstAttribute="leading" secondItem="88D-HR-K5q" secondAttribute="leading" type="default" id="3JX-jk-HWh"/>
-                            <constraint firstAttribute="bottom" secondItem="r9F-I4-3Uq" secondAttribute="bottom" constant="12" id="FYJ-Dz-OxM"/>
-                            <constraint firstItem="7zV-vu-yFr" firstAttribute="top" secondItem="88D-HR-K5q" secondAttribute="top" type="default" id="mso-7d-i8s"/>
-                            <constraint firstItem="xXl-qP-LWZ" firstAttribute="leading" secondItem="88D-HR-K5q" secondAttribute="leading" type="default" id="qux-rO-dQU"/>
-                            <constraint firstItem="xXl-qP-LWZ" firstAttribute="trailing" secondItem="88D-HR-K5q" secondAttribute="trailing" type="default" id="unk-lD-Qzb"/>
-                            <constraint firstItem="7zV-vu-yFr" firstAttribute="trailing" secondItem="88D-HR-K5q" secondAttribute="trailing" type="default" id="utL-ed-2mk"/>
-                            <constraint firstItem="xXl-qP-LWZ" firstAttribute="bottom" secondItem="88D-HR-K5q" secondAttribute="bottom" type="default" id="yAa-5i-1gY"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="qoG-CL-Xrb">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="aQU-bu-ACC">
@@ -114,7 +101,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="distanceLabel" destination="r9F-I4-3Uq" id="N28-T3-pGO"/>
-                        <outlet property="image" destination="7zV-vu-yFr" id="62e-9S-OoK"/>
+                        <outlet property="imageView" destination="V2o-jG-U32" id="nBJ-MV-Klr"/>
                         <outlet property="nextButton" destination="aQU-bu-ACC" id="wkg-gf-TsK"/>
                         <segue destination="SUH-3U-Jxi" kind="push" identifier="ShowMap" id="fj0-Z1-O0W"/>
                     </connections>
@@ -131,15 +118,11 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kzt-TE-KX2"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="kzt-TE-KX2">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="kzt-TE-KX2" firstAttribute="leading" secondItem="uDe-Wc-tsN" secondAttribute="leading" type="default" id="Dro-se-a9M"/>
-                            <constraint firstItem="kzt-TE-KX2" firstAttribute="bottom" secondItem="uDe-Wc-tsN" secondAttribute="bottom" type="default" id="E8j-ci-Cmh"/>
-                            <constraint firstItem="kzt-TE-KX2" firstAttribute="trailing" secondItem="uDe-Wc-tsN" secondAttribute="trailing" type="default" id="kHa-uY-Muq"/>
-                            <constraint firstItem="kzt-TE-KX2" firstAttribute="top" secondItem="uDe-Wc-tsN" secondAttribute="top" type="default" id="lf7-5N-ZGr"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xLG-p8-W1J"/>
                     <connections>
@@ -158,12 +141,11 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jDM-Ow-Efa">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="439" id="tmt-rn-LTd"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="jDM-Ow-Efa">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="439"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8go-3v-DOq">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8go-3v-DOq">
+                                <rect key="frame" x="20" y="497" width="76" height="44"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Record">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -176,7 +158,8 @@
                                     <action selector="record:" destination="th1-b8-j1g" eventType="touchUpInside" id="pGF-aG-isR"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iq0-iZ-d9O">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iq0-iZ-d9O">
+                                <rect key="frame" x="245" y="497" width="55" height="44"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Play">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -189,10 +172,8 @@
                                     <action selector="play:" destination="th1-b8-j1g" eventType="touchUpInside" id="E4Z-XG-tPf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MSn-rA-r4e">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="65" id="u31-Zs-06k"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MSn-rA-r4e">
+                                <rect key="frame" x="128" y="497" width="65" height="44"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Stop">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -207,17 +188,6 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="MSn-rA-r4e" firstAttribute="centerX" secondItem="jDM-Ow-Efa" secondAttribute="centerX" type="default" id="0vU-B8-Lpw"/>
-                            <constraint firstItem="8go-3v-DOq" firstAttribute="baseline" secondItem="MSn-rA-r4e" secondAttribute="baseline" type="default" id="2Ee-Rd-8N7"/>
-                            <constraint firstItem="jDM-Ow-Efa" firstAttribute="top" secondItem="XNL-BO-lge" secondAttribute="top" type="default" id="KYi-wq-bTd"/>
-                            <constraint firstAttribute="trailing" secondItem="iq0-iZ-d9O" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="UH7-ki-N9d"/>
-                            <constraint firstAttribute="bottom" secondItem="8go-3v-DOq" secondAttribute="bottom" constant="8" id="VM9-hr-1wJ"/>
-                            <constraint firstItem="iq0-iZ-d9O" firstAttribute="baseline" secondItem="MSn-rA-r4e" secondAttribute="baseline" type="default" id="W1m-UZ-dQh"/>
-                            <constraint firstItem="jDM-Ow-Efa" firstAttribute="leading" secondItem="XNL-BO-lge" secondAttribute="leading" type="default" id="hez-YA-jgB"/>
-                            <constraint firstItem="8go-3v-DOq" firstAttribute="leading" secondItem="XNL-BO-lge" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="k82-Cf-vns"/>
-                            <constraint firstItem="jDM-Ow-Efa" firstAttribute="trailing" secondItem="XNL-BO-lge" secondAttribute="trailing" type="default" id="zmm-vX-V7J"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fyR-cA-xdK">
                         <barButtonItem key="rightBarButtonItem" title="Done" id="7AB-fn-o4h">
@@ -257,6 +227,45 @@
             <point key="canvasLocation" x="-1" y="-14"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="CreateViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CreateViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="finish:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="play:" candidateClass="UIButton"/>
+                <relationship kind="action" name="record:" candidateClass="UIButton"/>
+                <relationship kind="action" name="stop:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="image" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="recordButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="stopButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="MapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="create:" candidateClass="UIButton"/>
+                <relationship kind="action" name="goToView:" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="showPapaViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/showPapaViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="goToMap:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="nextPage:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="play:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="distanceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="nextButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
