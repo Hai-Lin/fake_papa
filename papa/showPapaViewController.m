@@ -56,14 +56,14 @@
 }
 
 - (void)scrollViewDoubleTapped:(UITapGestureRecognizer*)recognizer {
-    // 1
+    
     CGPoint pointInView = [recognizer locationInView:self.imageView];
     
-    // 2
+    
     CGFloat newZoomScale = self.scrollView.zoomScale * 1.5f;
     newZoomScale = MIN(newZoomScale, self.scrollView.maximumZoomScale);
     
-    // 3
+    
     CGSize scrollViewSize = self.scrollView.bounds.size;
     
     CGFloat w = scrollViewSize.width / newZoomScale;
@@ -73,7 +73,6 @@
     
     CGRect rectToZoomTo = CGRectMake(x, y, w, h);
     
-    // 4
     [self.scrollView zoomToRect:rectToZoomTo animated:YES];
 }
 
