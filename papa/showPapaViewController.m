@@ -16,6 +16,7 @@
 @property CLLocation *location;
 @property CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -29,6 +30,7 @@
 @synthesize location = _location;
 @synthesize distanceLabel = _distanceLabel;
 @synthesize locationManager = _locationManager;
+@synthesize scrollView = _scrollView;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -49,6 +51,12 @@
     [_imageView setImage:gotImage];
     if(appDelegate.papas.count <= (_index+1))
         _nextButton.enabled = NO;
+    
+    //setup scrollView
+    _scrollView.delegate = self;
+    _scrollView.contentSize = gotImage.size;
+    _imageView.frame = CGRectMake( 0, 0, _imageView.image.size.width, _imageView.image.size.height);
+
     //Get user location
     
     _locationManager = [[CLLocationManager alloc] init];
