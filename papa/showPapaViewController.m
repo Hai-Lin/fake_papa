@@ -88,6 +88,7 @@
 
 - (void)viewDidLoad
 {
+
     [super viewDidLoad];
      AppDelegate * appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     _papa = appDelegate.papas[_index];
@@ -95,7 +96,11 @@
     [_imageView setImage:gotImage];
     if(appDelegate.papas.count <= (_index+1))
         _nextButton.enabled = NO;
-    
+    //distance label
+    _distanceLabel.textColor = [UIColor colorWithWhite:1 alpha:1];
+
+    _distanceLabel.backgroundColor = [UIColor colorWithRed: 0 green:0 blue:0 alpha:0.6];
+
     //setup scrollView
     _scrollView.delegate = self;
     _scrollView.contentSize = gotImage.size;
@@ -153,6 +158,8 @@
 
     
 	// Do any additional setup after loading the view.
+    
+    
 }
 
 
