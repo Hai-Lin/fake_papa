@@ -83,6 +83,13 @@
     [self.scrollView setZoomScale:newZoomScale animated:YES];
 }
 
+- (void) didSwipe:(UITapGestureRecognizer*)recognizer {
+    NSLog(@"Swipe");
+    AppDelegate * appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if(appDelegate.papas.count > (_index+1))
+        [self performSegueWithIdentifier:@"nextPage" sender:self];
+}
+
 
 
 
@@ -116,6 +123,11 @@
     twoFingerTapRecognizer.numberOfTapsRequired = 1;
     twoFingerTapRecognizer.numberOfTouchesRequired = 2;
     [self.scrollView addGestureRecognizer:twoFingerTapRecognizer];
+    
+    // Add gestureReconizer to view
+    UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
+    [self.view addGestureRecognizer:swipeGestureRecognizer];
+
 
     //Get user location
     
@@ -181,6 +193,10 @@
     [self centerScrollViewContents];
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+    [self centerScrollViewContents];
+
+}
 
 - (IBAction)nextPage:(UIBarButtonItem *)sender {
      AppDelegate * appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
