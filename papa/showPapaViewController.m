@@ -27,14 +27,14 @@
 
 @implementation showPapaViewController
 
-@synthesize index = _index;
-@synthesize papa = _papa;
-@synthesize imageView = _imageView;
 @synthesize audioPlayer = _audioPlayer;
-@synthesize nextButton = _nextButton;
-@synthesize location = _location;
 @synthesize distanceLabel = _distanceLabel;
+@synthesize index = _index;
+@synthesize imageView = _imageView;
+@synthesize location = _location;
 @synthesize locationManager = _locationManager;
+@synthesize papa = _papa;
+@synthesize nextButton = _nextButton;
 @synthesize scrollView = _scrollView;
 @synthesize toolBarView = _toolBarView;
 

@@ -27,11 +27,22 @@
     return self;
 }
 
+- (void) didSwipeRight:(UITapGestureRecognizer*)recognizer {
+    NSLog(@"Swipe Right");
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-      	// Do any additional setup after loading the view.
+    
+    // Do any additional setup after loading the view.
+    //Swipe Right
+    UISwipeGestureRecognizer *swipeGestureRecognizerRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeRight:)];
+    swipeGestureRecognizerRight.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:swipeGestureRecognizerRight];
+    
+    
 }
 
 
