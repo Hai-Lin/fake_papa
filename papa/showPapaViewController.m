@@ -102,17 +102,38 @@
 - (void) didSwipeLeft:(UITapGestureRecognizer*)recognizer {
     NSLog(@"Swipe Left");
     AppDelegate * appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if(appDelegate.papas.count > (_index+1))
+    if(appDelegate.papas.count > (_index+1)) {
         [self performSegueWithIdentifier:@"nextPage" sender:self];
+    }
 }
 
+- (void) didSwipeRight:(UITapGestureRecognizer*)recognizer {
+    NSLog(@"Swipe Right");
+    [self.navigationController popViewControllerAnimated:YES];
+    }
 
 
+-(void) initScrollView {
+    CGRect scrollViewFrame = self.scrollView.frame;
+    CGFloat scaleWidth = scrollViewFrame.size.width / self.scrollView.contentSize.width;
+    CGFloat scaleHeight = scrollViewFrame.size.height / self.scrollView.contentSize.height;
+    CGFloat minScale = MIN(scaleWidth, scaleHeight);
+    self.scrollView.minimumZoomScale = minScale;
+    
+    
+    self.scrollView.maximumZoomScale = 1.5f;
+    self.scrollView.zoomScale = minScale;
+    
+    
+    [self centerScrollViewContents];
+    [[self navigationController] setNavigationBarHidden:YES animated:YES];
+}
 
 - (void)viewDidLoad
 {
 
     [super viewDidLoad];
+    
      AppDelegate * appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     _papa = appDelegate.papas[_index];
     UIImage *gotImage = [_papa.imageData objectForKey:UIImagePickerControllerOriginalImage];
@@ -210,35 +231,16 @@
     
 	// Do any additional setup after loading the view.
     
+    [self initScrollView];
     
 }
 
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    
-    CGRect scrollViewFrame = self.scrollView.frame;
-    CGFloat scaleWidth = scrollViewFrame.size.width / self.scrollView.contentSize.width;
-    CGFloat scaleHeight = scrollViewFrame.size.height / self.scrollView.contentSize.height;
-    CGFloat minScale = MIN(scaleWidth, scaleHeight);
-    self.scrollView.minimumZoomScale = minScale;
-    
-    
-    self.scrollView.maximumZoomScale = 1.0f;
-    self.scrollView.zoomScale = minScale;
-    
-    
-    [self centerScrollViewContents];
-    [[self navigationController] setNavigationBarHidden:YES animated:YES];
-}
 
 
 
-- (void) viewDidAppear:(BOOL)animated {
-   // [self centerScrollViewContents];
-    
-}
+
+
 
 - (IBAction)nextPage:(UIBarButtonItem *)sender {
      AppDelegate * appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -253,10 +255,10 @@
         AppDelegate * appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         if(appDelegate.papas.count > (_index+1))
         {
+            //this is gona kill me
             int newIndex = _index+1;
             [segue.destinationViewController setIndex:newIndex];
         }
-        
     }
     if([segue.identifier isEqualToString:@"ShowMap"]) {
         [segue.destinationViewController setLocation:_location];
@@ -295,16 +297,18 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
     double distance = [_location distanceFromLocation:_locationManager.location];
     _distanceLabel.text = [NSString stringWithFormat:@"%f miles away",distance/METERS_PER_MILE];
+    /*
     NSLog(@"%@", [_location description]);
     NSLog(@"%@", [_locationManager.location description]);
     
     NSLog(@"%f",[_location distanceFromLocation:_locationManager.location]);
+     */
 }
 
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
-    NSLog(@"%@",[error description]);
+    //NSLog(@"%@",[error description]);
 }
 
 #pragma mark UIScrollViewDelegate
@@ -317,8 +321,17 @@
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView {
     // The scroll view has zoomed, so you need to re-center the contents
     [self centerScrollViewContents];
+    NSLog(@"%f",scrollView.zoomScale);
+    NSLog(@"%f",scrollView.minimumZoomScale);
+/*
+    if (scrollView.zoomScale>0.8) {
+        // Zooming, enable scrolling
+        scrollView.scrollEnabled = TRUE;
+    } else {
+        // Not zoomed, disable scrolling so gestures get used instead
+        scrollView.scrollEnabled = FALSE;
+    }
+ */
 }
-
-
 
 @end
