@@ -17,6 +17,7 @@
 @property CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolBarView;
 
 - (void)centerScrollViewContents;
 - (void)scrollViewDoubleTapped:(UITapGestureRecognizer*)recognizer;
@@ -35,6 +36,7 @@
 @synthesize distanceLabel = _distanceLabel;
 @synthesize locationManager = _locationManager;
 @synthesize scrollView = _scrollView;
+@synthesize toolBarView = _toolBarView;
 
 - (void)centerScrollViewContents {
     CGSize boundsSize = self.scrollView.bounds.size;
@@ -83,8 +85,22 @@
     [self.scrollView setZoomScale:newZoomScale animated:YES];
 }
 
-- (void) didSwipe:(UITapGestureRecognizer*)recognizer {
-    NSLog(@"Swipe");
+-(void)scrollViewSingleTapped:(UITapGestureRecognizer*)recognizer {
+    //single tap to hide tollbar
+    NSLog(@"Single Tap");
+    if(_toolBarView.hidden) {
+        _toolBarView.hidden = NO;
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    }
+    else {
+        _toolBarView.hidden = YES;
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+
+    }
+}
+
+- (void) didSwipeLeft:(UITapGestureRecognizer*)recognizer {
+    NSLog(@"Swipe Left");
     AppDelegate * appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     if(appDelegate.papas.count > (_index+1))
         [self performSegueWithIdentifier:@"nextPage" sender:self];
@@ -114,10 +130,18 @@
     _imageView.frame = CGRectMake( 0, 0, _imageView.image.size.width, _imageView.image.size.height);
     
     // Add gestureReconizer to scrollView
+    
+    //Double Tap
     UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewDoubleTapped:)];
     doubleTapRecognizer.numberOfTapsRequired = 2;
     doubleTapRecognizer.numberOfTouchesRequired = 1;
     [self.scrollView addGestureRecognizer:doubleTapRecognizer];
+    
+    
+    
+    
+    
+    //pinch
     
     UITapGestureRecognizer *twoFingerTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewTwoFingerTapped:)];
     twoFingerTapRecognizer.numberOfTapsRequired = 1;
@@ -125,8 +149,23 @@
     [self.scrollView addGestureRecognizer:twoFingerTapRecognizer];
     
     // Add gestureReconizer to view
-    UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
-    [self.view addGestureRecognizer:swipeGestureRecognizer];
+    //Sinlge Tap
+    
+    UITapGestureRecognizer *singleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewSingleTapped:)];
+    singleTapRecognizer.numberOfTapsRequired = 1;
+    singleTapRecognizer.numberOfTouchesRequired = 1;
+    [self.scrollView addGestureRecognizer:singleTapRecognizer];
+    
+    //Swipe Left
+    UISwipeGestureRecognizer *swipeGestureRecognizerLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeLeft:)];
+    swipeGestureRecognizerLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:swipeGestureRecognizerLeft];
+    
+    //Swipe Right
+    UISwipeGestureRecognizer *swipeGestureRecognizerRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeRight:)];
+    swipeGestureRecognizerRight.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:swipeGestureRecognizerRight];
+
 
 
     //Get user location
@@ -166,8 +205,8 @@
                   failureBlock:failureblock];
     
     //End getting location
-
-
+    
+   
     
 	// Do any additional setup after loading the view.
     
@@ -191,11 +230,14 @@
     
     
     [self centerScrollViewContents];
+    [[self navigationController] setNavigationBarHidden:YES animated:YES];
 }
 
-- (void) viewDidAppear:(BOOL)animated {
-    [self centerScrollViewContents];
 
+
+- (void) viewDidAppear:(BOOL)animated {
+   // [self centerScrollViewContents];
+    
 }
 
 - (IBAction)nextPage:(UIBarButtonItem *)sender {
