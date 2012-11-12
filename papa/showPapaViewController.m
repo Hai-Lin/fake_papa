@@ -323,15 +323,6 @@
     [self centerScrollViewContents];
     NSLog(@"%f",scrollView.zoomScale);
     NSLog(@"%f",scrollView.minimumZoomScale);
-/*
-    if (scrollView.zoomScale>0.8) {
-        // Zooming, enable scrolling
-        scrollView.scrollEnabled = TRUE;
-    } else {
-        // Not zoomed, disable scrolling so gestures get used instead
-        scrollView.scrollEnabled = FALSE;
-    }
- */
 }
 
 @end
