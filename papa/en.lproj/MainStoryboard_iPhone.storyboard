@@ -83,6 +83,7 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="fG7-5K-yMp"/>
+                                    <barButtonItem title="+" style="plain" id="bAc-CI-pyC"/>
                                     <barButtonItem title="Play" style="plain" id="j8O-Ra-CFA">
                                         <connections>
                                             <action selector="play:" destination="zfU-Kn-cnJ" id="Xbz-2p-mOf"/>
@@ -109,6 +110,7 @@
                     </navigationItem>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="addButton" destination="bAc-CI-pyC" id="njQ-d3-vbP"/>
                         <outlet property="distanceLabel" destination="r9F-I4-3Uq" id="N28-T3-pGO"/>
                         <outlet property="imageView" destination="V2o-jG-U32" id="nBJ-MV-Klr"/>
                         <outlet property="nextButton" destination="aQU-bu-ACC" id="wkg-gf-TsK"/>

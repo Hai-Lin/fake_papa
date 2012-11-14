@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolBarView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 
 - (void)centerScrollViewContents;
 - (void)scrollViewDoubleTapped:(UITapGestureRecognizer*)recognizer;
@@ -27,6 +28,7 @@
 
 @implementation showPapaViewController
 
+@synthesize addButton = _addButton;
 @synthesize audioPlayer = _audioPlayer;
 @synthesize distanceLabel = _distanceLabel;
 @synthesize index = _index;
