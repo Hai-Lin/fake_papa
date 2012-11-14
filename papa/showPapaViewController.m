@@ -10,7 +10,7 @@
 
 #define METERS_PER_MILE 1609.344
 
-@interface showPapaViewController ()
+@interface showPapaViewController () <UIActionSheetDelegate>
 @property papa *papa;
 @property AVAudioPlayer *audioPlayer;
 @property CLLocation *location;
@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolBarView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
+
+- (IBAction)addNewContent:(UIBarButtonItem *)sender;
 
 - (void)centerScrollViewContents;
 - (void)scrollViewDoubleTapped:(UITapGestureRecognizer*)recognizer;
@@ -39,6 +41,17 @@
 @synthesize nextButton = _nextButton;
 @synthesize scrollView = _scrollView;
 @synthesize toolBarView = _toolBarView;
+
+- (IBAction)addNewContent:(UIBarButtonItem *)sender {
+    UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Add New Photo"
+                                                            delegate:self
+                                                   cancelButtonTitle:@"Cancel Button"
+                                              destructiveButtonTitle:nil
+                                                   otherButtonTitles:@"Take Photo", @"From Photo Album", nil];
+    popupQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+    [popupQuery showFromBarButtonItem:_addButton animated:YES];
+
+}
 
 - (void)centerScrollViewContents {
     CGSize boundsSize = self.scrollView.bounds.size;
@@ -299,12 +312,6 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
     double distance = [_location distanceFromLocation:_locationManager.location];
     _distanceLabel.text = [NSString stringWithFormat:@"%f miles away",distance/METERS_PER_MILE];
-    /*
-    NSLog(@"%@", [_location description]);
-    NSLog(@"%@", [_locationManager.location description]);
-    
-    NSLog(@"%f",[_location distanceFromLocation:_locationManager.location]);
-     */
 }
 
 
@@ -326,5 +333,19 @@
     NSLog(@"%f",scrollView.zoomScale);
     NSLog(@"%f",scrollView.minimumZoomScale);
 }
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    switch (buttonIndex) {
+        case 0:
+            NSLog(@"0 button clicked");
+            break;
+        case 1:
+            break;
+     
+          
+     }
+   
+}
+
 
 @end
