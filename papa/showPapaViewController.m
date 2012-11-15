@@ -7,10 +7,11 @@
 //
 
 #import "showPapaViewController.h"
+#import "newImageViewController.h"
 
 #define METERS_PER_MILE 1609.344
 
-@interface showPapaViewController () <UIActionSheetDelegate>
+@interface showPapaViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property papa *papa;
 @property AVAudioPlayer *audioPlayer;
 @property CLLocation *location;
@@ -334,17 +335,49 @@
     NSLog(@"%f",scrollView.minimumZoomScale);
 }
 
+
+#pragma mark UIImagePickerControllerDelegate
+
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [self dismissViewControllerAnimated:YES completion:^ () {
+        
+        
+        [self performSegueWithIdentifier:@"viewImage" sender:self];
+    }];
+    
+    
+    
+    
+}
+
+- (void)imagePickerControllerDidCancel:
+(UIImagePickerController *)picker {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+
+
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     switch (buttonIndex) {
         case 0:
+        {
             NSLog(@"0 button clicked");
-            break;
+            UIImagePickerController *pickerC = [[UIImagePickerController alloc] init];
+            pickerC.delegate = self;
+            [self presentViewController:pickerC animated:YES completion:nil];
+                      break;
+        }
         case 1:
+        {
+            UIImagePickerController *pickerC = [[UIImagePickerController alloc] init];
+            pickerC.delegate = self;
+            [self presentViewController:pickerC animated:YES completion:nil];
             break;
-     
+        }
           
      }
-   
 }
 
 

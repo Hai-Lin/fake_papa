@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 #import <AVFoundation/AVFoundation.h>
+
 @interface showPapaViewController : UIViewController <AVAudioPlayerDelegate, CLLocationManagerDelegate, UIScrollViewDelegate>
 @property(nonatomic, assign) int index;
 - (IBAction)nextPage:(UIBarButtonItem *)sender;
