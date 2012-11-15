@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolBarView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
+@property NSDictionary *imageInfo;
 
 - (IBAction)addNewContent:(UIBarButtonItem *)sender;
 
@@ -35,6 +36,7 @@
 @synthesize audioPlayer = _audioPlayer;
 @synthesize distanceLabel = _distanceLabel;
 @synthesize index = _index;
+@synthesize imageInfo = _imageInfo;
 @synthesize imageView = _imageView;
 @synthesize location = _location;
 @synthesize locationManager = _locationManager;
@@ -279,6 +281,10 @@
     if([segue.identifier isEqualToString:@"ShowMap"]) {
         [segue.destinationViewController setLocation:_location];
     }
+    if([segue.identifier isEqualToString:@"viewImage"]) {
+        [segue.destinationViewController setImageInfo:_imageInfo];
+    }
+
     
 }
 
@@ -340,6 +346,7 @@
 
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    _imageInfo = info;
     [self dismissViewControllerAnimated:YES completion:^ () {
         
         
