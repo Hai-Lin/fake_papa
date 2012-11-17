@@ -211,7 +211,7 @@
     [[RKClient sharedClient] post:@"/try.py" params:params delegate:self];
      */
     NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @"2", @"lastview",
+                            @"2", @"last_view",
                             @"1", @"family_id",
                             nil];
 
