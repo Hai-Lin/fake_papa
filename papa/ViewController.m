@@ -14,6 +14,7 @@
 
 @interface ViewController () <RKObjectLoaderDelegate,RKRequestDelegate>
 @property NSDictionary *imageRowData;
+@property NSArray *imageArray;
 - (IBAction)testRestKit:(UIButton *)sender;
 - (IBAction)fetchData:(UIButton *)sender;
 
@@ -22,6 +23,7 @@
 @implementation ViewController
 
 @synthesize imageRowData = _imageRowData;
+@synthesize imageArray = _imageArray;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -69,6 +71,13 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
         
     }
     
+    if([segue.identifier isEqualToString:@"viewPapa"])
+    {
+        [segue.destinationViewController setImageArray:_imageArray];
+        
+    }
+
+    
 }
 
 
@@ -81,19 +90,23 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 }
 
 - (IBAction)goToView:(UIButton *)sender {
-     AppDelegate * appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if(appDelegate.papas.count > 0)
+     //AppDelegate * appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    //if(appDelegate.papas.count > 0)
         [self performSegueWithIdentifier:@"viewPapa" sender:self];
 }
 
 
 - (IBAction)fetchData:(UIButton *)sender {
     NSFetchRequest* fetchRequest = [Image fetchRequest];
-    NSSortDescriptor* sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
+    NSSortDescriptor* sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:NO];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
-    NSArray* sortedObjects = [Image objectsWithFetchRequest:fetchRequest];
-    for (Image *image in sortedObjects) {
+    _imageArray = [Image objectsWithFetchRequest:fetchRequest];
+    for (Image *image in _imageArray) {
+        NSLog(@"id: %@", image.id);
         NSLog(@"url: %@", image.imageURL);
+        NSLog(@"path: %@", image.imagePath);
+        NSLog(@"cordinateX: %@", image.cordinateX);
+        NSLog(@"cordinateY: %@", image.cordinateY);
 
         }
 }
@@ -126,18 +139,22 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 }
 
 
+#pragma mark RKObjectLoaderDelegate
 
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
     RKLogInfo(@"Load collection of Images: %@", objects);
     for (Image *image in objects) {
         NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-        NSLog(@"%@",docDir);
-        
-        NSLog(@"saving data");
-        NSData *data =  [NSData dataWithContentsOfURL:[NSURL URLWithString: image.imageURL]];
-        NSString *filePath = [NSString stringWithFormat:@"%@/imagedata",docDir];
-        [data writeToFile:filePath atomically:YES];
+       
+        NSString *filePath = [NSString stringWithFormat:@"%@/%@_imagedata",docDir, image.id];
+        NSLog(@"path: %@", filePath);
+        image.imagePath = filePath;
+        BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:filePath];
+        if (!fileExists) {
+            NSData *data =  [NSData dataWithContentsOfURL:[NSURL URLWithString: image.imageURL]];
+            [data writeToFile:filePath atomically:YES];
+        }
 
         
 

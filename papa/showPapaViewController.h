@@ -19,6 +19,6 @@
 - (IBAction)play:(UIBarButtonItem *)sender;
 - (IBAction)goToMap:(UIBarButtonItem *)sender;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
-@property NSArray * images;
+@property NSArray * imageArray;
 
 @end

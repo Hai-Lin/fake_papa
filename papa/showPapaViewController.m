@@ -36,7 +36,7 @@
 @synthesize audioPlayer = _audioPlayer;
 @synthesize distanceLabel = _distanceLabel;
 @synthesize index = _index;
-@synthesize images = _images;
+@synthesize imageArray = _imageArray;
 @synthesize imageInfo = _imageInfo;
 @synthesize imageView = _imageView;
 @synthesize location = _location;
@@ -153,11 +153,13 @@
 
     [super viewDidLoad];
     
-     AppDelegate * appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    _papa = appDelegate.papas[_index];
-    UIImage *gotImage = [_papa.imageData objectForKey:UIImagePickerControllerOriginalImage];
+     //AppDelegate * appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    //_papa = appDelegate.papas[_index];
+    Image *image = _imageArray[0];
+    NSData *imageData = [[NSFileManager defaultManager] contentsAtPath:image.imagePath];
+    UIImage *gotImage = [UIImage imageWithData:imageData];
     [_imageView setImage:gotImage];
-    if(appDelegate.papas.count <= (_index+1))
+    if(_imageArray.count <= (_index+1))
         _nextButton.enabled = NO;
     //distance label
     _distanceLabel.textColor = [UIColor colorWithWhite:1 alpha:1];
