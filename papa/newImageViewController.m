@@ -199,7 +199,7 @@
 
 - (IBAction)setImage:(UIBarButtonItem *)sender {
     //post image to serve
-    /*
+    
     NSDictionary* paramsDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                       @"1", @"family_id",
                                       @"1,2", @"coordinates",
@@ -211,15 +211,7 @@
     [params setData:imageData MIMEType:@"image/png" forParam:@"uploadFile"];
     
     [[RKClient sharedClient] post:@"/try.py" params:params delegate:self];
-     */
-    NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @"2", @"last_view",
-                            @"1", @"family_id",
-                            nil];
-
-    [[RKClient sharedClient] get:@"/get_photos.py" queryParameters:params delegate:self ];
-
-
+    
 }
 
 
@@ -229,8 +221,6 @@
         
         if ([response isJSON]) {
             NSLog(@"Got a JSON response back from our POST!");
-            NSLog([request.URL description]);
-            NSLog([response bodyAsString]);
             
         }
         

@@ -36,6 +36,7 @@
 @synthesize audioPlayer = _audioPlayer;
 @synthesize distanceLabel = _distanceLabel;
 @synthesize index = _index;
+@synthesize images = _images;
 @synthesize imageInfo = _imageInfo;
 @synthesize imageView = _imageView;
 @synthesize location = _location;

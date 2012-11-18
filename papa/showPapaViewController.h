@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 #import <AVFoundation/AVFoundation.h>
+#import "Image.h"
 
 @interface showPapaViewController : UIViewController <AVAudioPlayerDelegate, CLLocationManagerDelegate, UIScrollViewDelegate>
 @property(nonatomic, assign) int index;
@@ -18,5 +19,6 @@
 - (IBAction)play:(UIBarButtonItem *)sender;
 - (IBAction)goToMap:(UIBarButtonItem *)sender;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
+@property NSArray * images;
 
 @end

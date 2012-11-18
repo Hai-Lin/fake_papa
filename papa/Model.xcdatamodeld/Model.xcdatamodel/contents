@@ -3,10 +3,12 @@
     <entity name="Image" representedClassName="Image" syncable="YES">
         <attribute name="cordinateX" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="cordinateY" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imagePath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uploadTime" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Image" positionX="-45" positionY="-9" width="128" height="103"/>
+        <element name="Image" positionX="-711" positionY="-450" width="128" height="133"/>
     </elements>
 </model>

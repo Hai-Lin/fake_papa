@@ -2,7 +2,7 @@
 //  Image.m
 //  papa
 //
-//  Created by Hai Lin on 11/17/12.
+//  Created by Hai Lin on 11/18/12.
 //  Copyright (c) 2012 Hai Lin. All rights reserved.
 //
 
@@ -11,9 +11,11 @@
 
 @implementation Image
 
-@dynamic url;
-@dynamic uploadTime;
 @dynamic cordinateX;
 @dynamic cordinateY;
+@dynamic uploadTime;
+@dynamic imageURL;
+@dynamic id;
+@dynamic imagePath;
 
 @end

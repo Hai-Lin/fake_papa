@@ -89,11 +89,12 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 
 - (IBAction)fetchData:(UIButton *)sender {
     NSFetchRequest* fetchRequest = [Image fetchRequest];
-    NSSortDescriptor* sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"url" ascending:YES];
+    NSSortDescriptor* sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
     NSArray* sortedObjects = [Image objectsWithFetchRequest:fetchRequest];
     for (Image *image in sortedObjects) {
-        NSLog(@"url: %@", image.url);
+        NSLog(@"url: %@", image.imageURL);
+
         }
 }
 
@@ -108,15 +109,19 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
     objectManager.serializationMIMEType = RKMIMETypeJSON;
     
     RKManagedObjectMapping* imageMapping = [RKManagedObjectMapping mappingForClass:[Image class] inManagedObjectStore:objectStore];
-    [imageMapping mapKeyPath:@"url" toAttribute:@"url"];
+    [imageMapping mapKeyPath:@"url" toAttribute:@"imageURL"];
     [imageMapping mapKeyPath:@"X" toAttribute:@"cordinateX"];
     [imageMapping mapKeyPath:@"Y" toAttribute:@"cordinateY"];
     [imageMapping mapKeyPath:@"time" toAttribute:@"uploadTime"];
-    imageMapping.primaryKeyAttribute = @"url";
+    [imageMapping mapKeyPath:@"id" toAttribute:@"id"];
+
+
+    imageMapping.primaryKeyAttribute = @"id";
     
     [objectManager.mappingProvider setMapping:imageMapping forKeyPath:@"images"];
 
-    [objectManager loadObjectsAtResourcePath:@"/get_photos.py?last_view=1&family_id=1" delegate:self ];
+    [objectManager loadObjectsAtResourcePath:@"/get_photos.py?last_view=-1&family_id=3" delegate:self ];
+
 
 }
 
@@ -125,6 +130,30 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
     RKLogInfo(@"Load collection of Images: %@", objects);
+    for (Image *image in objects) {
+        NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        NSLog(@"%@",docDir);
+        
+        NSLog(@"saving data");
+        NSData *data =  [NSData dataWithContentsOfURL:[NSURL URLWithString: image.imageURL]];
+        NSString *filePath = [NSString stringWithFormat:@"%@/imagedata",docDir];
+        [data writeToFile:filePath atomically:YES];
+
+        
+
+/*
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:image.url]];
+            //image.imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:image.url]];
+            NSLog(@"imagedata saved");
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // Update the UI
+            });
+        });
+       */
+        
+    }
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
