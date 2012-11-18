@@ -8,9 +8,14 @@
 
 #import "ViewController.h"
 #import "AppDelegate.h"
+#import <RestKit/RestKit.h>
+#import <RestKit/CoreData.h>
+#import "Image.h"
 
-@interface ViewController ()
+@interface ViewController () <RKObjectLoaderDelegate,RKRequestDelegate>
 @property NSDictionary *imageRowData;
+- (IBAction)testRestKit:(UIButton *)sender;
+- (IBAction)fetchData:(UIButton *)sender;
 
 @end
 
@@ -81,4 +86,49 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
         [self performSegueWithIdentifier:@"viewPapa" sender:self];
 }
 
+
+- (IBAction)fetchData:(UIButton *)sender {
+    NSFetchRequest* fetchRequest = [Image fetchRequest];
+    NSSortDescriptor* sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"url" ascending:YES];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    NSArray* sortedObjects = [Image objectsWithFetchRequest:fetchRequest];
+    for (Image *image in sortedObjects) {
+        NSLog(@"url: %@", image.url);
+        }
+}
+
+- (IBAction)testRestKit:(UIButton *)sender {
+    RKObjectManager* objectManager = [RKObjectManager objectManagerWithBaseURLString:@"http://kennel.cs.columbia.edu:8821"];
+    RKManagedObjectStore *objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:RKDefaultSeedDatabaseFileName];
+    objectManager.objectStore = objectStore;
+
+    
+        
+    
+    objectManager.serializationMIMEType = RKMIMETypeJSON;
+    
+    RKManagedObjectMapping* imageMapping = [RKManagedObjectMapping mappingForClass:[Image class] inManagedObjectStore:objectStore];
+    [imageMapping mapKeyPath:@"url" toAttribute:@"url"];
+    [imageMapping mapKeyPath:@"X" toAttribute:@"cordinateX"];
+    [imageMapping mapKeyPath:@"Y" toAttribute:@"cordinateY"];
+    [imageMapping mapKeyPath:@"time" toAttribute:@"uploadTime"];
+    imageMapping.primaryKeyAttribute = @"url";
+    
+    [objectManager.mappingProvider setMapping:imageMapping forKeyPath:@"images"];
+
+    [objectManager loadObjectsAtResourcePath:@"/get_photos.py?last_view=1&family_id=1" delegate:self ];
+
+}
+
+
+
+
+- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
+    RKLogInfo(@"Load collection of Images: %@", objects);
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
+    NSString *msg = [NSString stringWithFormat:@"Error: %@", [error localizedDescription]];
+    NSLog(@"log : %@",msg);
+}
 @end

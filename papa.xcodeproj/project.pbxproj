@@ -27,6 +27,8 @@
 		380943431634911C00C8347E /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380943421634911C00C8347E /* CoreAudio.framework */; };
 		380943451634965E00C8347E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380943441634965E00C8347E /* AVFoundation.framework */; };
 		3809434C1634CA9100C8347E /* showPapaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3809434B1634CA9000C8347E /* showPapaViewController.m */; };
+		382167C216583E0A0061B248 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 382167C016583E0A0061B248 /* Model.xcdatamodeld */; };
+		382168261658997E0061B248 /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 382168251658997E0061B248 /* Image.m */; };
 		383B68ED165472EB00BC65CE /* newImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 383B68EC165472EB00BC65CE /* newImageViewController.m */; };
 		38A1E42D1650E1D300A461D8 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A1E4211650E0A900A461D8 /* libRestKit.a */; };
 		38A1E42F1650E1F000A461D8 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A1E42E1650E1F000A461D8 /* CFNetwork.framework */; };
@@ -115,6 +117,9 @@
 		380943441634965E00C8347E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		3809434A1634CA9000C8347E /* showPapaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = showPapaViewController.h; sourceTree = "<group>"; };
 		3809434B1634CA9000C8347E /* showPapaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = showPapaViewController.m; sourceTree = "<group>"; };
+		382167C116583E0A0061B248 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		382168241658997E0061B248 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
+		382168251658997E0061B248 /* Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Image.m; sourceTree = "<group>"; };
 		383B68EB165472EB00BC65CE /* newImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newImageViewController.h; sourceTree = "<group>"; };
 		383B68EC165472EB00BC65CE /* newImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newImageViewController.m; sourceTree = "<group>"; };
 		38A1E4151650E0A800A461D8 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
@@ -214,6 +219,9 @@
 				3809433B1634849A00C8347E /* CreateViewController.h */,
 				383B68EB165472EB00BC65CE /* newImageViewController.h */,
 				383B68EC165472EB00BC65CE /* newImageViewController.m */,
+				382167C016583E0A0061B248 /* Model.xcdatamodeld */,
+				382168241658997E0061B248 /* Image.h */,
+				382168251658997E0061B248 /* Image.m */,
 				3809433C1634849A00C8347E /* CreateViewController.m */,
 				380942DB1630E7B400C8347E /* MainStoryboard_iPad.storyboard */,
 				380942DE1630E7B400C8347E /* ViewController.h */,
@@ -374,6 +382,8 @@
 				38A8D3B01634ECAE00754924 /* MapViewController.m in Sources */,
 				38A8D3B31634F2B700754924 /* MyLocation.m in Sources */,
 				383B68ED165472EB00BC65CE /* newImageViewController.m in Sources */,
+				382167C216583E0A0061B248 /* Model.xcdatamodeld in Sources */,
+				382168261658997E0061B248 /* Image.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,6 +531,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		382167C016583E0A0061B248 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				382167C116583E0A0061B248 /* Model.xcdatamodel */,
+			);
+			currentVersion = 382167C116583E0A0061B248 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 380942B31630E7B400C8347E /* Project object */;
 }

@@ -9,6 +9,8 @@
 #import "newImageViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <RestKit/RestKit.h>
+#import <RestKit/CoreData.h>
+
 
 
 
