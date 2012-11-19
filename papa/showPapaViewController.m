@@ -152,6 +152,7 @@
 }
 
 - (void)fetchImageFromDataBase {
+    _imageArray = [[NSArray alloc] init];
     NSLog(@"fetch image from database");
     NSFetchRequest* fetchRequest = [Image fetchRequest];
     NSSortDescriptor* sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:NO];
@@ -176,16 +177,11 @@
 {
 
     [super viewDidLoad];
-    
-     //AppDelegate * appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    //_papa = appDelegate.papas[_index];
     if(!_imageArray)
         [self fetchImageFromDataBase];
                
     Image *image = _imageArray[_index];
-    NSLog(@"path: %@", image.imagePath);
-    NSLog(@"url: %@", image.imageURL);
-
+    
 
     UIImage *gotImage = [UIImage imageWithData:[[NSFileManager defaultManager] contentsAtPath:image.imagePath]];
     [_imageView setImage:gotImage];

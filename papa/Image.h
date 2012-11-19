@@ -14,9 +14,9 @@
 
 @property (nonatomic, retain) NSNumber * cordinateX;
 @property (nonatomic, retain) NSNumber * cordinateY;
-@property (nonatomic, retain) NSString * uploadTime;
-@property (nonatomic, retain) NSString * imageURL;
-@property (nonatomic, retain) NSString * id;
+@property (nonatomic, retain) NSNumber * id;
 @property (nonatomic, retain) NSString * imagePath;
+@property (nonatomic, retain) NSString * imageURL;
+@property (nonatomic, retain) NSString * uploadTime;
 
 @end

@@ -133,8 +133,10 @@
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(setImage:)];
     
     UIBarButtonItem *reRecordingButton = [[UIBarButtonItem alloc] initWithTitle:@"Rerecord" style:UIBarButtonItemStylePlain target:self action:@selector(reRecording)];
+    reRecordingButton.width = 90;
     
     UIBarButtonItem *audioPlayBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Playback" style:UIBarButtonItemStylePlain target:self action:@selector(audioPlayBack)];
+    audioPlayBackButton.width = 120;
     
     _firstPage = [[NSArray alloc] initWithObjects:cancelRecordingButton, _finishRecordingButton,  nil];
     _secondPage = [[NSArray alloc] initWithObjects:reRecordingButton, audioPlayBackButton, doneButton, nil];
@@ -201,7 +203,7 @@
     //post image to serve
     
     NSDictionary* paramsDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                      @"1", @"family_id",
+                                      @"3", @"family_id",
                                       @"1,2", @"coordinates",
                                       nil];
     RKParams* params = [RKParams paramsWithDictionary:paramsDictionary];
@@ -230,6 +232,8 @@
         if ([response isJSON]) {
             NSLog(@"Got a JSON response back from our POST!");
             NSLog([response bodyAsString]);
+            [self dismissViewControllerAnimated:YES completion:nil];
+
 
         }
         

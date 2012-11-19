@@ -16,6 +16,7 @@
 @interface ViewController () <RKObjectLoaderDelegate,RKRequestDelegate>
 @property NSDictionary *imageRowData;
 @property NSArray *imageArray;
+@property RKObjectManager* objectManager ;
 - (IBAction)testRestKit:(UIButton *)sender;
 
 @end
@@ -24,6 +25,7 @@
 
 @synthesize imageRowData = _imageRowData;
 @synthesize imageArray = _imageArray;
+@synthesize objectManager = _objectManager;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -31,8 +33,39 @@
     {
         _imageRowData = [[NSDictionary alloc] init];
     }
-    AppDelegate * appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSLog(@"%d", appDelegate.papas.count);
+    
+    // init objectManager
+    if(!_objectManager) {
+        
+        
+        RKObjectManager* objectManager = [RKObjectManager objectManagerWithBaseURLString:@"http://kennel.cs.columbia.edu:8821"];
+        RKManagedObjectStore *objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:RKDefaultSeedDatabaseFileName];
+        
+        objectManager.objectStore = objectStore;
+        
+        
+        
+        
+        objectManager.serializationMIMEType = RKMIMETypeJSON;
+        
+        RKManagedObjectMapping* imageMapping = [RKManagedObjectMapping mappingForClass:[Image class] inManagedObjectStore:objectStore];
+        [imageMapping mapKeyPath:@"url" toAttribute:@"imageURL"];
+        [imageMapping mapKeyPath:@"X" toAttribute:@"cordinateX"];
+        [imageMapping mapKeyPath:@"Y" toAttribute:@"cordinateY"];
+        [imageMapping mapKeyPath:@"time" toAttribute:@"uploadTime"];
+        [imageMapping mapKeyPath:@"id" toAttribute:@"id"];
+        
+        
+        imageMapping.primaryKeyAttribute = @"id";
+        
+        [objectManager.mappingProvider setMapping:imageMapping forKeyPath:@"images"];
+        
+        
+        _objectManager = objectManager;
+    }
+
+  
+
     
 	// Do any additional setup after loading the view, typically from a nib.
 }
@@ -90,36 +123,19 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 }
 
 - (IBAction)goToView:(UIButton *)sender {
-     //AppDelegate * appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    //if(appDelegate.papas.count > 0)
         [self performSegueWithIdentifier:@"viewPapa" sender:self];
 }
 
 
 
 - (IBAction)testRestKit:(UIButton *)sender {
-    RKObjectManager* objectManager = [RKObjectManager objectManagerWithBaseURLString:@"http://kennel.cs.columbia.edu:8821"];
-    RKManagedObjectStore *objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:RKDefaultSeedDatabaseFileName];
-    objectManager.objectStore = objectStore;
+    int lastindex = [[NSUserDefaults standardUserDefaults] integerForKey:@"lastIndex"];
+    NSLog(@"lastindex : %d", lastindex);
 
-    
-        
-    
-    objectManager.serializationMIMEType = RKMIMETypeJSON;
-    
-    RKManagedObjectMapping* imageMapping = [RKManagedObjectMapping mappingForClass:[Image class] inManagedObjectStore:objectStore];
-    [imageMapping mapKeyPath:@"url" toAttribute:@"imageURL"];
-    [imageMapping mapKeyPath:@"X" toAttribute:@"cordinateX"];
-    [imageMapping mapKeyPath:@"Y" toAttribute:@"cordinateY"];
-    [imageMapping mapKeyPath:@"time" toAttribute:@"uploadTime"];
-    [imageMapping mapKeyPath:@"id" toAttribute:@"id"];
+    NSString *url = [NSString stringWithFormat:@"/get_photos.py?last_view=%d&family_id=3",lastindex];
 
 
-    imageMapping.primaryKeyAttribute = @"id";
-    
-    [objectManager.mappingProvider setMapping:imageMapping forKeyPath:@"images"];
-
-    [objectManager loadObjectsAtResourcePath:@"/get_photos.py?last_view=-1&family_id=3" delegate:self ];
+    [_objectManager loadObjectsAtResourcePath:url delegate:self ];
 
 
 }
@@ -130,7 +146,38 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
     RKLogInfo(@"Load collection of Images: %@", objects);
+    
+    if(objects.count > 0) {
+        Image *firstImage = objects[0];
+
+        int lastindex = [firstImage.id intValue];
+        
+        [[NSUserDefaults standardUserDefaults] setInteger:lastindex forKey:@"lastIndex" ];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+
+        
+    }
+    
     for (Image *image in objects) {
+        NSLog(@"id: %@", image.id);
+        
+        NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        
+        NSString *filePath = [NSString stringWithFormat:@"%@/%@_imagedata",docDir, image.id];
+        NSLog(@"path: %@", filePath);
+        image.imagePath = filePath;
+        NSError *error;
+        [image.managedObjectContext save:&error];
+        BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:filePath];
+        if (!fileExists) {
+            NSData *data =  [NSData dataWithContentsOfURL:[NSURL URLWithString: image.imageURL]];
+            [data writeToFile:filePath atomically:YES];
+            
+        }
+         
+        
+        //put into different thread
+/*
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
             NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
             
@@ -147,8 +194,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
                 // Update the UI
             });
         });
-       
-        
+      
+        */
     }
 }
 

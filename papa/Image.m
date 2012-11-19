@@ -13,9 +13,9 @@
 
 @dynamic cordinateX;
 @dynamic cordinateY;
-@dynamic uploadTime;
-@dynamic imageURL;
 @dynamic id;
 @dynamic imagePath;
+@dynamic imageURL;
+@dynamic uploadTime;
 
 @end

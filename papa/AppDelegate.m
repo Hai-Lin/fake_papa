@@ -12,6 +12,16 @@
 @synthesize papas = _papas;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults objectForKey:@"firstRun"]) {
+        [defaults setObject:[NSDate date] forKey:@"firstRun"];
+        [defaults setInteger:-1 forKey:@"lastIndex"];
+        NSLog(@"init for first time");
+        
+    }
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     // Override point for customization after application launch.
     return YES;
 }

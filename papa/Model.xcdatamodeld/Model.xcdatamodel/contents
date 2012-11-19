@@ -3,7 +3,7 @@
     <entity name="Image" representedClassName="Image" syncable="YES">
         <attribute name="cordinateX" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="cordinateY" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="imagePath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uploadTime" optional="YES" attributeType="String" syncable="YES"/>
