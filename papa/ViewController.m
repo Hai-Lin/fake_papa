@@ -11,12 +11,12 @@
 #import <RestKit/RestKit.h>
 #import <RestKit/CoreData.h>
 #import "Image.h"
+#import "showPapaViewController.h"
 
 @interface ViewController () <RKObjectLoaderDelegate,RKRequestDelegate>
 @property NSDictionary *imageRowData;
 @property NSArray *imageArray;
 - (IBAction)testRestKit:(UIButton *)sender;
-- (IBAction)fetchData:(UIButton *)sender;
 
 @end
 
@@ -73,7 +73,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     if([segue.identifier isEqualToString:@"viewPapa"])
     {
-        [segue.destinationViewController setImageArray:_imageArray];
+        [segue.destinationViewController  setIndex: 0];
         
     }
 
@@ -96,20 +96,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 }
 
 
-- (IBAction)fetchData:(UIButton *)sender {
-    NSFetchRequest* fetchRequest = [Image fetchRequest];
-    NSSortDescriptor* sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:NO];
-    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
-    _imageArray = [Image objectsWithFetchRequest:fetchRequest];
-    for (Image *image in _imageArray) {
-        NSLog(@"id: %@", image.id);
-        NSLog(@"url: %@", image.imageURL);
-        NSLog(@"path: %@", image.imagePath);
-        NSLog(@"cordinateX: %@", image.cordinateX);
-        NSLog(@"cordinateY: %@", image.cordinateY);
-
-        }
-}
 
 - (IBAction)testRestKit:(UIButton *)sender {
     RKObjectManager* objectManager = [RKObjectManager objectManagerWithBaseURLString:@"http://kennel.cs.columbia.edu:8821"];
@@ -145,30 +131,23 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
     RKLogInfo(@"Load collection of Images: %@", objects);
     for (Image *image in objects) {
-        NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-       
-        NSString *filePath = [NSString stringWithFormat:@"%@/%@_imagedata",docDir, image.id];
-        NSLog(@"path: %@", filePath);
-        image.imagePath = filePath;
-        BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:filePath];
-        if (!fileExists) {
-            NSData *data =  [NSData dataWithContentsOfURL:[NSURL URLWithString: image.imageURL]];
-            [data writeToFile:filePath atomically:YES];
-        }
-
-        
-
-/*
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-            NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:image.url]];
-            //image.imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:image.url]];
-            NSLog(@"imagedata saved");
+            NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
             
+            NSString *filePath = [NSString stringWithFormat:@"%@/%@_imagedata",docDir, image.id];
+            NSLog(@"path: %@", filePath);
+            image.imagePath = filePath;
+            BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:filePath];
+            if (!fileExists) {
+                NSData *data =  [NSData dataWithContentsOfURL:[NSURL URLWithString: image.imageURL]];
+                [data writeToFile:filePath atomically:YES];
+
+            }
             dispatch_async(dispatch_get_main_queue(), ^{
                 // Update the UI
             });
         });
-       */
+       
         
     }
 }

@@ -27,6 +27,7 @@
 - (void)centerScrollViewContents;
 - (void)scrollViewDoubleTapped:(UITapGestureRecognizer*)recognizer;
 - (void)scrollViewTwoFingerTapped:(UITapGestureRecognizer*)recognizer;
+- (void)fetchImageFromDataBase;
 
 @end
 
@@ -45,6 +46,9 @@
 @synthesize nextButton = _nextButton;
 @synthesize scrollView = _scrollView;
 @synthesize toolBarView = _toolBarView;
+
+
+
 
 - (IBAction)addNewContent:(UIBarButtonItem *)sender {
     UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Add New Photo"
@@ -120,10 +124,9 @@
 
 - (void) didSwipeLeft:(UITapGestureRecognizer*)recognizer {
     NSLog(@"Swipe Left");
-    AppDelegate * appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if(appDelegate.papas.count > (_index+1)) {
+    if(_imageArray.count > (_index+1))
         [self performSegueWithIdentifier:@"nextPage" sender:self];
-    }
+ 
 }
 
 - (void) didSwipeRight:(UITapGestureRecognizer*)recognizer {
@@ -148,6 +151,27 @@
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
 }
 
+- (void)fetchImageFromDataBase {
+    NSLog(@"fetch image from database");
+    NSFetchRequest* fetchRequest = [Image fetchRequest];
+    NSSortDescriptor* sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:NO];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    _imageArray = [Image objectsWithFetchRequest:fetchRequest];
+    
+    for (Image *image in _imageArray) {
+        NSLog(@"id: %@", image.id);
+        NSLog(@"url: %@", image.imageURL);
+        NSLog(@"path: %@", image.imagePath);
+        NSLog(@"cordinateX: %@", image.cordinateX);
+        NSLog(@"cordinateY: %@", image.cordinateY);
+        
+    }
+    
+    
+    
+}
+
+
 - (void)viewDidLoad
 {
 
@@ -155,13 +179,17 @@
     
      //AppDelegate * appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     //_papa = appDelegate.papas[_index];
-    Image *image = _imageArray[0];
-    NSData *imageData = [[NSFileManager defaultManager] contentsAtPath:image.imagePath];
-    UIImage *gotImage = [UIImage imageWithData:imageData];
+    if(!_imageArray)
+        [self fetchImageFromDataBase];
+               
+    Image *image = _imageArray[_index];
+    NSLog(@"path: %@", image.imagePath);
+    NSLog(@"url: %@", image.imageURL);
+
+
+    UIImage *gotImage = [UIImage imageWithData:[[NSFileManager defaultManager] contentsAtPath:image.imagePath]];
     [_imageView setImage:gotImage];
-    if(_imageArray.count <= (_index+1))
-        _nextButton.enabled = NO;
-    //distance label
+       //distance label
     _distanceLabel.textColor = [UIColor colorWithWhite:1 alpha:1];
 
     _distanceLabel.backgroundColor = [UIColor colorWithRed: 0 green:0 blue:0 alpha:0.6];
@@ -264,8 +292,7 @@
 
 
 - (IBAction)nextPage:(UIBarButtonItem *)sender {
-     AppDelegate * appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        if(appDelegate.papas.count > (_index+1))
+    if(_imageArray.count > (_index+1))
         [self performSegueWithIdentifier:@"nextPage" sender:self];
 }
 
@@ -273,11 +300,12 @@
 {
     if([segue.identifier isEqualToString:@"nextPage"])
     {
-        AppDelegate * appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        if(appDelegate.papas.count > (_index+1))
+        if(_imageArray.count > (_index+1))
         {
             //this is gona kill me
             int newIndex = _index+1;
+            NSLog(@"array count: %d", _imageArray.count);
+            NSLog(@"new index: %d", newIndex);
             [segue.destinationViewController setIndex:newIndex];
         }
     }
