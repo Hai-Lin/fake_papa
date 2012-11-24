@@ -10,7 +10,6 @@
 #import "papa.h"
 #import "CreateViewController.h"
 
-@interface ViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
-- (IBAction)create:(UIButton *)sender;
+@interface ViewController : UIViewController <UINavigationControllerDelegate>
 - (IBAction)goToView:(UIButton *)sender;
 @end

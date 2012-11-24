@@ -14,8 +14,6 @@
 #import "showPapaViewController.h"
 
 @interface ViewController () <RKObjectLoaderDelegate,RKRequestDelegate>
-@property NSDictionary *imageRowData;
-@property NSArray *imageArray;
 @property RKObjectManager* objectManager ;
 - (IBAction)testRestKit:(UIButton *)sender;
 
@@ -23,17 +21,11 @@
 
 @implementation ViewController
 
-@synthesize imageRowData = _imageRowData;
-@synthesize imageArray = _imageArray;
 @synthesize objectManager = _objectManager;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-        if(!_imageRowData)
-    {
-        _imageRowData = [[NSDictionary alloc] init];
-    }
-    
+       
     // init objectManager
     if(!_objectManager) {
         
@@ -76,34 +68,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark UIImagePickerControllerDelegate
-
-
-- (void)imagePickerController:(UIImagePickerController *)picker
-didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    [self dismissViewControllerAnimated:YES completion:nil];
-    _imageRowData = info;
-        NSLog(@"pick image");
-    [self performSegueWithIdentifier:@"CreateSegue" sender:self];
-    
-    
-    
-}
-
-- (void)imagePickerControllerDidCancel:
-(UIImagePickerController *)picker {
-     [self dismissViewControllerAnimated:YES completion:nil];
-}
 
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([segue.identifier isEqualToString:@"CreateSegue"])
-    {
-        [segue.destinationViewController setImageInfo:_imageRowData];
         
-    }
-    
     if([segue.identifier isEqualToString:@"viewPapa"])
     {
         [segue.destinationViewController  setIndex: 0];
@@ -114,13 +83,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 }
 
 
-- (IBAction)create:(UIButton *)sender {
-    UIImagePickerController *pickerC =
-    [[UIImagePickerController alloc] init];
-    pickerC.delegate = self;
-    [self presentViewController:pickerC animated:YES completion:nil];
-
-}
 
 - (IBAction)goToView:(UIButton *)sender {
         [self performSegueWithIdentifier:@"viewPapa" sender:self];
