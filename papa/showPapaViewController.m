@@ -35,7 +35,7 @@
 
 @synthesize addButton = _addButton;
 @synthesize audioPlayer = _audioPlayer;
-@synthesize distanceLabel = _distanceLabel;
+@synthesize familyNameLabel = _familyNameLabel;
 @synthesize index = _index;
 @synthesize imageArray = _imageArray;
 @synthesize imageInfo = _imageInfo;
@@ -113,10 +113,12 @@
     NSLog(@"Single Tap");
     if(_toolBarView.hidden) {
         _toolBarView.hidden = NO;
+        _familyNameLabel.hidden = NO;
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     }
     else {
         _toolBarView.hidden = YES;
+        _familyNameLabel.hidden = YES;
         [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
 
     }
@@ -186,9 +188,9 @@
     UIImage *gotImage = [UIImage imageWithData:[[NSFileManager defaultManager] contentsAtPath:image.imagePath]];
     [_imageView setImage:gotImage];
        //distance label
-    _distanceLabel.textColor = [UIColor colorWithWhite:1 alpha:1];
+    _familyNameLabel.textColor = [UIColor colorWithWhite:1 alpha:1];
 
-    _distanceLabel.backgroundColor = [UIColor colorWithRed: 0 green:0 blue:0 alpha:0.6];
+    _familyNameLabel.backgroundColor = [UIColor colorWithRed: 0 green:0 blue:0 alpha:0.2];
 
     //setup scrollView
     _scrollView.delegate = self;
@@ -344,8 +346,8 @@
 #pragma mark locationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    double distance = [_location distanceFromLocation:_locationManager.location];
-    _distanceLabel.text = [NSString stringWithFormat:@"%f miles away",distance/METERS_PER_MILE];
+    //double distance = [_location distanceFromLocation:_locationManager.location];
+    //_distanceLabel.text = [NSString stringWithFormat:@"%f miles away",distance/METERS_PER_MILE];
 }
 
 

@@ -133,7 +133,6 @@
     }
     
     CGRect newSize = CGRectMake(startX, startY, newWidth, newHeight);
-    NSLog(@"%f %f %f %f",startX, startY, newWidth,newHeight);
     
     CGImageRef tmp = CGImageCreateWithImageInRect([sourceImage CGImage], newSize);
     UIImage *newImage = [UIImage imageWithCGImage:tmp];
@@ -146,7 +145,6 @@
 {
     [super viewDidLoad];
     UIImage *newImg = [_imageInfo objectForKey:UIImagePickerControllerOriginalImage];
-    NSLog(@"Load image");
     NSLog(@"%@", [_imageInfo description]);
     [_imageView setImage:[self chopImage:newImg]];
     _papa = [[papa alloc] init];

@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *nextButton;
 - (IBAction)play:(UIBarButtonItem *)sender;
 - (IBAction)goToMap:(UIBarButtonItem *)sender;
-@property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *familyNameLabel;
 @property NSArray * imageArray;
 
 @end
