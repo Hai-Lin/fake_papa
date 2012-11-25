@@ -225,8 +225,15 @@
     UIImage *sprite = [UIImage imageNamed:@"icon_sprite"];
     
     CGImageRef cgIcon = CGImageCreateWithImageInRect(sprite.CGImage, CGRectMake(280, 200, 40, 40));
+    //_carmeraButton.image = [UIImage imageWithCGImage:cgIcon];
     
-    [_carmeraButton setBackButtonBackgroundImage:[UIImage imageWithCGImage:cgIcon] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+    
+    
+    //[_carmeraButton setBackButtonBackgroundImage:[UIImage imageWithCGImage:cgIcon]
+    //                                    forState:UIControlStateNormal
+    //                                  barMetrics:UIBarMetricsDefault];
+    
     //[_carmeraButton setImage:[UIImage imageWithCGImage:cgIcon] forState:UIControlStateNormal];
 
     CGImageRelease(cgIcon);

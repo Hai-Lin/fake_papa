@@ -140,17 +140,9 @@
        return newImage;
 }
 
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    UIImage *newImg = [_imageInfo objectForKey:UIImagePickerControllerOriginalImage];
-    NSLog(@"%@", [_imageInfo description]);
-    [_imageView setImage:[self chopImage:newImg]];
-    _papa = [[papa alloc] init];
-    _papa.imageData = _imageInfo;
-    
+- (void) initToolBarItem {
     //init toolbar item
+    
     UIBarButtonItem *cancelRecordingButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style: UIBarButtonItemStylePlain target:self action:@selector(cancel:)];
     cancelRecordingButton.width = 180;
     
@@ -167,6 +159,19 @@
     _firstPage = [[NSArray alloc] initWithObjects:cancelRecordingButton, _finishRecordingButton,  nil];
     _secondPage = [[NSArray alloc] initWithObjects:reRecordingButton, audioPlayBackButton, doneButton, nil];
     
+}
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    UIImage *newImg = [_imageInfo objectForKey:UIImagePickerControllerOriginalImage];
+    NSLog(@"%@", [_imageInfo description]);
+    [_imageView setImage:[self chopImage:newImg]];
+    
+    _papa = [[papa alloc] init];
+    _papa.imageData = _imageInfo;
+    
+    
+    [self initToolBarItem];
 
 
     [_toolBar setItems:_firstPage animated:NO];

@@ -133,7 +133,7 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="fG7-5K-yMp"/>
-                                    <barButtonItem style="plain" id="bAc-CI-pyC">
+                                    <barButtonItem title="+" style="plain" id="bAc-CI-pyC">
                                         <connections>
                                             <action selector="addNewContent:" destination="zfU-Kn-cnJ" id="KbE-dp-chQ"/>
                                         </connections>
