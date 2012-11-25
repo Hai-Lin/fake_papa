@@ -89,7 +89,6 @@
 }
 
 
-
 - (IBAction)testRestKit:(UIButton *)sender {
     int lastindex = [[NSUserDefaults standardUserDefaults] integerForKey:@"lastIndex"];
     NSLog(@"lastindex : %d", lastindex);

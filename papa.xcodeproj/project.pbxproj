@@ -28,6 +28,7 @@
 		380943451634965E00C8347E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380943441634965E00C8347E /* AVFoundation.framework */; };
 		3809434C1634CA9100C8347E /* showPapaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3809434B1634CA9000C8347E /* showPapaViewController.m */; };
 		382167C216583E0A0061B248 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 382167C016583E0A0061B248 /* Model.xcdatamodeld */; };
+		3830455E1662948900627AB8 /* icon_spite.png in Resources */ = {isa = PBXBuildFile; fileRef = 3830455D1662948900627AB8 /* icon_spite.png */; };
 		383B68ED165472EB00BC65CE /* newImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 383B68EC165472EB00BC65CE /* newImageViewController.m */; };
 		388BB09C1659D57F0071B372 /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BB09B1659D57F0071B372 /* Image.m */; };
 		38A1E42D1650E1D300A461D8 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A1E4211650E0A900A461D8 /* libRestKit.a */; };
@@ -118,6 +119,7 @@
 		3809434A1634CA9000C8347E /* showPapaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = showPapaViewController.h; sourceTree = "<group>"; };
 		3809434B1634CA9000C8347E /* showPapaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = showPapaViewController.m; sourceTree = "<group>"; };
 		382167C116583E0A0061B248 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		3830455D1662948900627AB8 /* icon_spite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_spite.png; sourceTree = "<group>"; };
 		383B68EB165472EB00BC65CE /* newImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newImageViewController.h; sourceTree = "<group>"; };
 		383B68EC165472EB00BC65CE /* newImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newImageViewController.m; sourceTree = "<group>"; };
 		388BB09A1659D57E0071B372 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 		380942C61630E7B400C8347E /* papa */ = {
 			isa = PBXGroup;
 			children = (
+				3830455F1662949000627AB8 /* resource */,
 				380942CF1630E7B400C8347E /* AppDelegate.h */,
 				3809433B1634849A00C8347E /* CreateViewController.h */,
 				388BB09A1659D57E0071B372 /* Image.h */,
@@ -247,6 +250,14 @@
 				380942D61630E7B400C8347E /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3830455F1662949000627AB8 /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				3830455D1662948900627AB8 /* icon_spite.png */,
+			);
+			name = resource;
 			sourceTree = "<group>";
 		};
 		38A1E4161650E0A800A461D8 /* Products */ = {
@@ -363,6 +374,7 @@
 				380942D71630E7B400C8347E /* Default-568h@2x.png in Resources */,
 				380942DA1630E7B400C8347E /* MainStoryboard_iPhone.storyboard in Resources */,
 				380942DD1630E7B400C8347E /* MainStoryboard_iPad.storyboard in Resources */,
+				3830455E1662948900627AB8 /* icon_spite.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

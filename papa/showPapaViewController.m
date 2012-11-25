@@ -21,7 +21,9 @@
 @property (weak, nonatomic) IBOutlet UIToolbar *toolBarView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @property NSDictionary *imageInfo;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *carmeraButton;
 
+//icons
 - (IBAction)addNewContent:(UIBarButtonItem *)sender;
 
 - (void)centerScrollViewContents;
@@ -35,6 +37,7 @@
 
 @synthesize addButton = _addButton;
 @synthesize audioPlayer = _audioPlayer;
+@synthesize carmeraButton = _carmeraButton;
 @synthesize familyNameLabel = _familyNameLabel;
 @synthesize index = _index;
 @synthesize imageArray = _imageArray;
@@ -175,27 +178,8 @@
 }
 
 
-- (void)viewDidLoad
-{
 
-    [super viewDidLoad];
-    if(!_imageArray)
-        [self fetchImageFromDataBase];
-               
-    Image *image = _imageArray[_index];
-    
-
-    UIImage *gotImage = [UIImage imageWithData:[[NSFileManager defaultManager] contentsAtPath:image.imagePath]];
-    [_imageView setImage:gotImage];
-       //distance label
-    _familyNameLabel.textColor = [UIColor colorWithWhite:1 alpha:1];
-
-    _familyNameLabel.backgroundColor = [UIColor colorWithRed: 0 green:0 blue:0 alpha:0.2];
-
-    //setup scrollView
-    _scrollView.delegate = self;
-    _scrollView.contentSize = gotImage.size;
-    _imageView.frame = CGRectMake( 0, 0, _imageView.image.size.width, _imageView.image.size.height);
+- (void) addGesturesToView {
     
     // Add gestureReconizer to scrollView
     
@@ -204,7 +188,6 @@
     doubleTapRecognizer.numberOfTapsRequired = 2;
     doubleTapRecognizer.numberOfTouchesRequired = 1;
     [self.scrollView addGestureRecognizer:doubleTapRecognizer];
-    
     
     
     
@@ -234,6 +217,48 @@
     swipeGestureRecognizerRight.direction = UISwipeGestureRecognizerDirectionRight;
     [self.view addGestureRecognizer:swipeGestureRecognizerRight];
 
+    
+}
+
+-(void) initSprite {
+    
+    UIImage *sprite = [UIImage imageNamed:@"icon_sprite"];
+    
+    CGImageRef cgIcon = CGImageCreateWithImageInRect(sprite.CGImage, CGRectMake(280, 200, 40, 40));
+    
+    [_carmeraButton setBackButtonBackgroundImage:[UIImage imageWithCGImage:cgIcon] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    //[_carmeraButton setImage:[UIImage imageWithCGImage:cgIcon] forState:UIControlStateNormal];
+
+    CGImageRelease(cgIcon);
+
+}
+
+
+- (void)viewDidLoad
+{
+
+    [super viewDidLoad];
+    if(!_imageArray)
+        [self fetchImageFromDataBase];
+               
+    Image *image = _imageArray[_index];
+    
+
+    UIImage *gotImage = [UIImage imageWithData:[[NSFileManager defaultManager] contentsAtPath:image.imagePath]];
+    [_imageView setImage:gotImage];
+       //distance label
+    _familyNameLabel.textColor = [UIColor colorWithWhite:1 alpha:1];
+
+    _familyNameLabel.backgroundColor = [UIColor colorWithRed: 0 green:0 blue:0 alpha:0.2];
+
+    //setup scrollView
+    _scrollView.delegate = self;
+    _scrollView.contentSize = gotImage.size;
+    _imageView.frame = CGRectMake( 0, 0, _imageView.image.size.width, _imageView.image.size.height);
+    
+    [self addGesturesToView];
+    
+    [self initSprite];
 
 
     //Get user location

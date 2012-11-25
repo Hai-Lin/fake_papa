@@ -105,47 +105,47 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="slS-ZF-nQH">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <rect key="frame" x="-7" y="0.0" width="327" height="548"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="V2o-jG-U32">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                        <rect key="frame" x="7" y="0.0" width="320" height="548"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Family Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TJv-Ge-v7k">
-                                        <rect key="frame" x="31" y="20" width="116" height="49"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <toolbar clipsSubviews="YES" alpha="0.40000000000000013" contentMode="scaleToFill" barStyle="blackTranslucent" id="xXl-qP-LWZ">
-                                        <rect key="frame" x="0.0" y="504" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <items>
-                                            <barButtonItem title="Map" style="plain" id="vwm-FQ-Z0u">
-                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <connections>
-                                                    <action selector="goToMap:" destination="zfU-Kn-cnJ" id="YaZ-rr-XO6"/>
-                                                </connections>
-                                            </barButtonItem>
-                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="fG7-5K-yMp"/>
-                                            <barButtonItem title="+" style="plain" id="bAc-CI-pyC">
-                                                <connections>
-                                                    <action selector="addNewContent:" destination="zfU-Kn-cnJ" id="KbE-dp-chQ"/>
-                                                </connections>
-                                            </barButtonItem>
-                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="kXq-F2-M5w"/>
-                                            <barButtonItem title="Play" style="plain" id="j8O-Ra-CFA">
-                                                <connections>
-                                                    <action selector="play:" destination="zfU-Kn-cnJ" id="Xbz-2p-mOf"/>
-                                                </connections>
-                                            </barButtonItem>
-                                        </items>
-                                    </toolbar>
                                 </subviews>
                             </scrollView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Family Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TJv-Ge-v7k">
+                                <rect key="frame" x="20" y="20" width="107" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <toolbar clipsSubviews="YES" alpha="0.40000000000000013" contentMode="scaleToFill" barStyle="blackTranslucent" id="xXl-qP-LWZ">
+                                <rect key="frame" x="0.0" y="504" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <items>
+                                    <barButtonItem title="Map" style="plain" id="vwm-FQ-Z0u">
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="goToMap:" destination="zfU-Kn-cnJ" id="YaZ-rr-XO6"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="fG7-5K-yMp"/>
+                                    <barButtonItem style="plain" id="bAc-CI-pyC">
+                                        <connections>
+                                            <action selector="addNewContent:" destination="zfU-Kn-cnJ" id="KbE-dp-chQ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="kXq-F2-M5w"/>
+                                    <barButtonItem title="Play" style="plain" id="j8O-Ra-CFA">
+                                        <connections>
+                                            <action selector="play:" destination="zfU-Kn-cnJ" id="Xbz-2p-mOf"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                     </view>
@@ -160,6 +160,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="addButton" destination="bAc-CI-pyC" id="njQ-d3-vbP"/>
+                        <outlet property="carmeraButton" destination="bAc-CI-pyC" id="xoc-q9-n6K"/>
                         <outlet property="familyNameLabel" destination="TJv-Ge-v7k" id="rg4-4b-A6W"/>
                         <outlet property="imageView" destination="V2o-jG-U32" id="nBJ-MV-Klr"/>
                         <outlet property="nextButton" destination="aQU-bu-ACC" id="wkg-gf-TsK"/>
@@ -246,6 +247,7 @@
                 <relationship kind="action" name="nextPage:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="play:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="addButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="carmeraButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="familyNameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="nextButton" candidateClass="UIBarButtonItem"/>
