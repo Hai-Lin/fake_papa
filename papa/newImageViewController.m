@@ -113,6 +113,34 @@
 }
 
 
+- (UIImage*)chopImage: (UIImage*) sourceImage
+{
+    float newWidth, newHeight, startX, startY;
+    float oldWidth = sourceImage.size.width;
+    float oldHeight = sourceImage.size.height;
+    float ratio = oldWidth/oldHeight;
+    if (ratio > 1.5) {
+        newWidth = oldHeight*1.5;
+        newHeight = oldHeight;
+        startX = (oldWidth - newWidth)/2;
+        startY = 0;
+    }
+    else {
+        newHeight = oldWidth/1.5;
+        newWidth = oldWidth;
+        startX = 0;
+        startY = (oldHeight - newHeight)/2;
+    }
+    
+    CGRect newSize = CGRectMake(startX, startY, newWidth, newHeight);
+    NSLog(@"%f %f %f %f",startX, startY, newWidth,newHeight);
+    
+    CGImageRef tmp = CGImageCreateWithImageInRect([sourceImage CGImage], newSize);
+    UIImage *newImage = [UIImage imageWithCGImage:tmp];
+
+       return newImage;
+}
+
 
 - (void)viewDidLoad
 {
@@ -120,7 +148,7 @@
     UIImage *newImg = [_imageInfo objectForKey:UIImagePickerControllerOriginalImage];
     NSLog(@"Load image");
     NSLog(@"%@", [_imageInfo description]);
-    [_imageView setImage:newImg];
+    [_imageView setImage:[self chopImage:newImg]];
     _papa = [[papa alloc] init];
     _papa.imageData = _imageInfo;
     
